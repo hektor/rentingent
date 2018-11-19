@@ -3,11 +3,11 @@ const firebaseInstance = require('firebase');
 // Initialize Firebase
 // TODO: Replace with your project's config
 const config = {
-  apiKey: 'AIzaSyD3gkEeqHgu-VwYBYNIKfZlV7L1w_D_kR4',
-  authDomain: 'gdm-signup-proj.firebaseapp.com',
-  databaseURL: 'https://gdm-signup-proj.firebaseio.com',
-  projectId: 'gdm-signup-proj',
-  storageBucket: 'gdm-signup-proj.appspot.com',
+  apiKey: '<key>',
+  authDomain: '<projectId>.firebaseapp.com',
+  databaseURL: 'https://<projectId>.firebaseio.com',
+  projectId: '<projectId>',
+  storageBucket: '<projectId>.appspot.com',
   messagingSenderId: '52666332181',
 };
 
