@@ -1,0 +1,58 @@
+<div class="container">
+    {{> header }}
+    <div class="auth__container">
+        <form class="auth__form">
+            <div class="auth__provider">
+                <button class="auth__provider__btn auth__provider__google" type="submit">
+                    <img class="" src="../../images/google.svg" alt="">
+                </button>
+                <button class="auth__provider__btn auth__provider__facebook" type="submit">
+                    <img class="" src="../../images/facebook.svg" alt="">
+                </button>
+            </div>
+            <div class="auth__form__header">
+                Sign
+                <div class="auth__form__header__indicator">
+                    <span class="auth__form__header__signtype">in</span>
+                </div>
+            </div>
+            <label class="auth__label" for="username">Username | Email</label>
+            <input class="auth__input auth__input__email" type="text" name="username" autofocus required autocomplete="username">
+            <label class="auth__label" for="password">Password</label>
+            <input class="auth__input auth__input__password" type="password" autocomplete="cc" name="password">
+            <div class="auth__register">
+                <label class="auth__label" for="password-confirm">Confirm Password</label>
+                <input class="auth__input auth__input__password-confirm" type="password" autocomplete="cc" name="password-confirm">
+                <div class="switch auth__switch">
+                    <ion-icon name="school" size="large"></ion-icon>
+                    <input type="checkbox" id="switch__user-type">
+                    <label for="switch__user-type"></label>
+                    <ion-icon name="person" size="large"></ion-icon>
+                </div>
+                {{!-- <div class="auth__name">
+                    <div class="auth__first-name">
+                        <label class="auth__label" for="first-name">First Name</label>
+                        <input class="auth__input auth__input__first-name" type="text" name="first-name" required>
+                    </div>
+                    <div class="auth__last-name">
+                        <label class="auth__label" for="last-name">Last Name</label>
+                        <input class="auth__input auth__input__last-name" type="text" name="last-name" required>
+                    </div>
+                </div>
+                <h4>Adres/Coords</h4>
+                <h4>Unief/Hogeschool</h4>
+                <h4>Tel</h4> --}}
+            </div>
+            <div class="auth__submit">
+                <button class="auth__submit__btn auth__submit__signin" type="submit">
+                    <ion-icon class="auth__submit__icon" name="log-in" size="large"></ion-icon>
+                </button>
+                <button class="auth__submit__btn auth__submit__signup" type="submit">
+                    <ion-icon class="auth__submit__icon" name="person-add" size="large"></ion-icon>
+                </button>
+            </div>
+        </form>
+        <div class="auth__form__help">
+        </div>
+    </div>
+</div>

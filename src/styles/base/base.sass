@@ -1,0 +1,29 @@
+@import "typography"
+@import "colors"
+
+//	Shadow
+
+$shadow__button: 0 5px 15px 0px rgba(0,0,0,.03)
+$shadow__button--strong: 0 0 1rem 0px rgba(0,0,0,.09)
+
+$shadow__inner: inset 0 0px 10px 0px rgba(0,0,0,.05)
+$shadow__button--hover: 0 15px 18px 0px rgba(0,0,0,0.1)
+
+//  Animations
+@keyframes float 
+	0% 
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.3)
+		transform: translateY(0px)
+	
+	50% 
+		box-shadow: 0 15px 18px 0px rgba(0,0,0,0.2)
+		transform: translateY(-3px)
+	
+	100% 
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.3)
+		transform: translateY(0px)
+
+//	Mixins
+@mixin clickable		
+	cursor: hand
+	cursor: pointer
