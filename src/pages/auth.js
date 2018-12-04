@@ -4,6 +4,7 @@ import update from '../helpers/update';
 
 // Import the template to use
 const authTemplate = require('../templates/auth.handlebars');
+
 const { getInstance } = require('../firebase/firebase');
 const firebase = getInstance();
 
@@ -12,7 +13,7 @@ export default () => {
   //Check if the user is signed in
   firebase.auth().onAuthStateChanged(user => {
     if (user) {
-      firebase.auth().signOut();
+      //firebase.auth().signOut();
       console.log(
         `Logged in: ${
           user.displayName !== null ? user.displayName : user.email

@@ -16,7 +16,6 @@ handlebars.registerPartial(
 
 // Router logic to load the correct template when needed
 const router = new Navigo(window.location.origin, true);
-
 routes.forEach(route => {
   router.on(route.path, () => {
     route.view();
