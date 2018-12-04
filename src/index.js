@@ -7,6 +7,9 @@ import routes from './routes';
 const header = require('./partials/header.handlebars');
 const footer = require('./partials/footer.handlebars');
 
+const { getInstance } = require('./firebase/firebase');
+const firebase = getInstance();
+
 // Register the partial components
 handlebars.registerPartial('header', compile(header)({ title: 'RentInGent' }));
 handlebars.registerPartial(
@@ -16,18 +19,25 @@ handlebars.registerPartial(
 
 // Router logic to load the correct template when needed
 const router = new Navigo(window.location.origin, true);
+
 routes.forEach(route => {
   router.on(route.path, () => {
-    route.view();
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        route.view();
+        console.log('User logged in');
+      } else if (!user) {
+        console.log('User NOT logged in');
+        routes[0].view();
+      }
+    });
   });
 });
 
 // This catches all non-existing routes and redirects back to the home
 router.notFound(() => {
-  router.navigate('/home');
+  router.navigate('/404');
 });
-
-router.resolve();
 
 window.onload = () => {
   document.onclick = e => {
@@ -37,3 +47,5 @@ window.onload = () => {
     }
   };
 };
+
+router.resolve();
