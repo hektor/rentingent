@@ -1,0 +1,36 @@
+.container__error-page
+
+    display: flex
+    flex-direction: column
+    background: $color1
+    background: $gradient__dark_i
+    height: 100vh
+    justify-content: center
+    justify-items: center
+    justify-self: center
+
+.container__error
+
+    background: $gradient__regular
+    width: 20rem
+    height: 20rem
+    margin: auto
+    padding: 6rem
+    border-radius: 50%
+    color: $color__w
+    @include animation__float
+
+.title__404
+
+    text-align: center
+    font-size: 10rem
+
+    &__message
+
+        text-align: center
+
+    &__link
+
+        text-align: center
+        display: block
+        @include clickable
