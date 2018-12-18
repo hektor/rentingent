@@ -4,20 +4,30 @@ import './styles/main.sass';
 import routes from './routes';
 
 // Partials
-const header = require('./partials/header.handlebars');
+const navHeader = require('./partials/header-nav.handlebars');
 const footer = require('./partials/footer.handlebars');
+const infoHeader = require('./partials/header-info.handlebars');
 
 const { getInstance } = require('./firebase/firebase');
 const firebase = getInstance();
 
-// Register the partial components
-handlebars.registerPartial('header', compile(header)({ title: 'RentInGent' }));
+// REGISTER THE PARTIAL COMPONENTS
+// Headers
+handlebars.registerPartial(
+  'header-nav',
+  compile(navHeader)({ title: 'RentInGent' })
+);
+handlebars.registerPartial(
+  'header-info',
+  compile(infoHeader)({ title: 'RentInGent' })
+);
+
 handlebars.registerPartial(
   'footer',
   compile(footer)({ text: 'Template made with love by GDM Ghent' })
 );
 
-// Router logic to load the correct template when needed
+// ROUTER LOGIC TO LOAD THE CORRECT TEMPLATE WHEN NEEDED
 const router = new Navigo(window.location.origin, true);
 
 routes.forEach(route => {
