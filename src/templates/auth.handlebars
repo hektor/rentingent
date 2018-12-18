@@ -1,6 +1,10 @@
 <div class="container">
+    {{>header-info}}
     <div class="auth__container">
         <form class="auth__form">
+            <div class="auth__form__helper">
+                Help
+            </div>
             <div class="auth__provider">
                 <button class="auth__provider__btn auth__provider__google" type="submit">
                     <img class="" src="./../images/google.svg" alt="">
@@ -18,10 +22,11 @@
             <label class="auth__label" for="username">Username | Email</label>
             <input class="auth__input auth__input__email" type="text" name="username" autofocus required autocomplete="username">
             <label class="auth__label" for="password">Password</label>
-            <input class="auth__input auth__input__password" type="password" autocomplete="cc" name="password">
+            <input class="auth__input auth__input__password" type="password" required autocomplete="cc" name="password">
             <div class="auth__register">
                 <label class="auth__label" for="password-confirm">Confirm Password</label>
-                <input class="auth__input auth__input__password-confirm" type="password" autocomplete="cc" name="password-confirm">
+                <input class="auth__input auth__input__password-confirm" type="password" required autocomplete="cc"
+                    name="password-confirm">
                 <div class="switch auth__switch">
                     <ion-icon name="school" size="large"></ion-icon>
                     <input type="checkbox" id="switch__user-type">
