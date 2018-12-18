@@ -1,0 +1,50 @@
+.header
+
+    z-index: 100
+    @include flex-row
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 3rem
+    padding: 1rem 2rem
+    box-sizing: border-box
+    justify-content: space-between
+    color: $color__w
+    font-family: $font__title
+
+.header__logo
+
+    @include animation__glow
+    @include clickable
+
+.header__button
+
+    &__info
+
+        @include animation__glow
+        @include clickable
+
+.header__info
+
+.header__navigation
+
+.header__navigation__links
+
+    display: flex
+    justify-content: space-evenly
+    height: 1rem
+    margin: .5rem
+    border: 1px solid red
+    width: 100%
+
+.header__background_cirlce
+
+    z-index: -1
+    position: absolute
+    width: 100vw
+    height: 100vw
+    transform: translateY(-50vw)
+    border-radius: 50%
+    background: $gradient__dark_half_o
+    opacity: 0.8

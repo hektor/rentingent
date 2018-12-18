@@ -1,7 +1,16 @@
+// 3RD PARTY CSS
 @import "../../node_modules/mapbox-gl/dist/mapbox-gl.css"
+
+// BASE - global variables & mixins
 @import "./base/base"
 
-// Generic styling
+// PAGES - page-specific css
+@import "./pages/pages"
+
+// PARTIALS - partial-specific css
+@import "./partials/partials"
+
+// GLOBAL CSS (+ Mediaqueries)
 *
     margin: 0
     padding: 0
@@ -24,15 +33,15 @@ body
       color: $color5
       opacity: 1
 
+input:required
 
-// general
-@import "./header"
-@import "./footer"
+  box-shadow: none
 
-// pages
-@import "./about"
-@import "./auth"
-@import "./404"
+.container
+
+  width: 100vw
+  height: 100vh
+  overflow: hidden
 
 //  ##Device = Desktops
 //  ##Screen = 1281px to higher resolution desktops
@@ -64,7 +73,6 @@ body
 
 @media (min-width: 481px) and (max-width: 767px)
   //CSS
- 
 //  ##Device = Most of the Smartphones Mobiles (Portrait)
 //  ##Screen = B/w 320px to 479px
 
