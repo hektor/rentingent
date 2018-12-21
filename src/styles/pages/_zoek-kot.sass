@@ -1,0 +1,88 @@
+.zoek-kot__container
+
+    @include flex-column
+    z-index: 1
+    position: relative
+    color: $color__secondary_dark
+    background: $gradient__dark
+    margin-top: 1rem
+
+.kot
+
+    display: flex
+    flex-direction: column
+    margin: 1rem
+    padding: 1rem
+    background: $color__w
+
+    &__header
+        
+        @include flex-row-center
+        justify-content: space-between
+        border: 1px solid red
+
+    &__name
+
+        border: 1px solid red
+
+    &__address
+
+        border: 1px solid red
+
+.zoek-kot__options
+
+    position: relative
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+    margin: 0 1rem
+    padding: 1rem
+    border: 1px solid red
+
+    .zoek-kot__search
+
+        position: relative
+
+        input[type='text']
+
+            background: none
+            border: none
+            z-index: 101
+            width: 2rem
+            height: 2rem
+            padding: 0 2rem
+            color: transparent
+            font-size: $font-size__md
+            font-family: $font__title
+            line-height: 1rem
+            transition: width 1s ease
+
+            &:hover
+
+                @include clickable
+
+                &:focus
+
+                    cursor: text
+            
+            &:focus
+
+                width: 100%
+                height: 2rem
+                color: #000
+                border-bottom: .125rem solid $color2
+                padding: 0 2rem
+                box-sizing: border-box
+
+        .search-toggle
+
+            z-index: -1
+            position: absolute
+            left: 0
+            top: 0
+            height: 2rem
+            width: 2rem
+            color: #000
+            @include animation__glow
+
+    

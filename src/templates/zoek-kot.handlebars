@@ -1,7 +1,43 @@
 {{> header-nav }}
 <div class="container">
-  <h1>Zoek een kot</h1>
-  <div class="zoek-kot__koten"></div>
+  <div class="zoek-kot__container">
+    <div class="zoek-kot__options">
+      <div class="zoek-kot__search">
+        <input class="search-box" type="text">
+        <span class="search-toggle">
+          <ion-icon class="search-toggle__icon icon" name="search" size="large"></ion-icon>
+        </span>
+      </div>
+      <div class="zoek-kot__filter">
+        <label for="kot-filter">Filter by </label>
+        <select class="zoek-kot__filter__dropdown dropdown" name="kot-filter">
+          <option value="filter-price">Price</option>
+          <option value="filter-type">Type</option>
+          <option value="filter-surface">Surface</option>
+          <option value="distance">Distance</option>
+        </select>
+      </div>
+    </div>
+    {{#each koten}}
+    <div class="kot">
+      <div class="kot__header">
+        <h1 class="kot__name">{{this.name}}</h1>
+        <h1 class="kot__address">{{this.address}}</h1>
+      </div>
+      <p class="kot__city">{{this.city}}</p>
+      <p class="kot__status">{{this.status}}</p>
+      <p class="kot__warranty">€{{this.warranty}}</p>
+      <p class="kot__floor">{{this.floor}}</p>
+      <p class="kot__has-toilet">{{this.hasToilet}}</p>
+      <p class="kot__has-kitchen"> {{this.hasKitchen}}</p>
+      <p class="kot__has-shower"> {{this.hasShower}}</p>
+      <p class="kot__has-furniture"> {{this.hasFurniture}}</p>
+      <p class="kot__total-price">€{{this.totalPrice}}/m</p>
+      <p class="kot__type">{{this.type}}</p>
+      <p class="kot__surface">{{this.surface}} m²</p>
+    </div>
+    {{/each}}
+  </div>
   <div class="body">
     This is the zoek-kot page.<br>
     Go to <a href="/home" data-path>Home page</a>
