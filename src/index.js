@@ -21,7 +21,6 @@ handlebars.registerPartial(
   'header-info',
   compile(infoHeader)({ title: 'RentInGent' })
 );
-
 handlebars.registerPartial(
   'footer',
   compile(footer)({ text: 'Template made with love by GDM Ghent' })
@@ -29,26 +28,57 @@ handlebars.registerPartial(
 
 // ROUTER LOGIC TO LOAD THE CORRECT TEMPLATE WHEN NEEDED
 const router = new Navigo(window.location.origin, true);
-
-routes.forEach(route => {
-  router.on(route.path, () => {
-    firebase.auth().onAuthStateChanged(user => {
-      if (user) {
+function createRoutes(loggedIn, activated) {
+  routes.forEach(route => {
+    router.on(route.path, () => {
+      if (loggedIn && activated) {
+        console.log('All routes available');
         route.view();
-        console.log('User logged in');
-      } else if (!user) {
-        console.log('User NOT logged in');
+      } else if (loggedIn) {
+        console.log('All routes available but please activate');
+        route.view();
+      } else {
+        router.navigate('/');
         routes[0].view();
+        console.log('All routes blocked except login');
       }
     });
   });
+  router.resolve();
+}
+
+firebase.auth().onAuthStateChanged(user => {
+  if (user) {
+    if (user.emailVerified) {
+      createRoutes(true, true);
+      console.log({ 'User logged in': user });
+    } else if (user.emailVerified !== true) {
+      createRoutes(true, false);
+      console.log({ 'User logged in but not activated': user });
+    }
+  } else {
+    createRoutes(false);
+    console.log({ 'User NOT logged in': user });
+  }
 });
+
+// @@TODO create a user class?
+class User {
+  constructor(emailVerified) {
+    this.emailVerified = emailVerified;
+  }
+  checkIfVerified() {
+    console.log(this.emailVerified ? 'Verified' : 'NOT Verified');
+    return this.emailVerified;
+  }
+}
 
 // This catches all non-existing routes and redirects back to the home
 router.notFound(() => {
   router.navigate('/404');
 });
 
+// Page linking functionality (elements with href attr)
 window.onload = () => {
   document.onclick = e => {
     if (e.target.getAttribute('href') !== null) {
@@ -58,4 +88,6 @@ window.onload = () => {
   };
 };
 
-router.resolve();
+document.querySelector('.btn__sign-out').addEventListener('click', e => {
+  firebase.auth().signOut();
+});
