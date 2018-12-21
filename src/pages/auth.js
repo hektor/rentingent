@@ -12,8 +12,6 @@ const firebase = getInstance();
 const database = firebase.database();
 
 export default () => {
-  //===============| GOOGLE AUTH FUNCTIONALITY |============== //
-  //Check if the user is signed in
   // Update DOM and get DOM elements
   update(compile(authTemplate)({}));
   const signTypeBtn = document.querySelector('.auth__form__header__indicator');
@@ -29,6 +27,7 @@ export default () => {
   );
   const formHelperEl = document.querySelector('.auth__form__helper');
 
+  //===============| GOOGLE AUTH FUNCTIONALITY |============== //
   // SIGN TYPE SWITCHER
   signTypeBtn.addEventListener('click', e => {
     if (signTypeEl.textContent === 'up') {
@@ -98,7 +97,7 @@ export default () => {
   googleAuthBtn.addEventListener('click', e => {
     e.preventDefault();
     console.log('Google authentication...');
-    let provider = firebase.auth().GoogleAuthProvider();
+    let provider = new firebase.auth().GoogleAuthProvider();
     firebase
       .auth()
       .signInWithPopup(provider)

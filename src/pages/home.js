@@ -10,10 +10,14 @@ const kotbaasHomeTemplate = require('../templates/kotbaas-home.handlebars');
 
 export default () => {
   // Data to be passed to the template
+
   const user = 'user';
   // Return the compiled template to the router
+
   // check user-type here and load home page accordingly
+
   // check if user is activated - if not, load activation-home.handlebars
+
   update(compile(studentHomeTemplate)({ user }));
 
   class RenderKot {
