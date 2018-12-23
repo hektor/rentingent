@@ -1,5 +1,7 @@
 import Navigo from 'navigo';
 import handlebars, { compile } from 'handlebars';
+import update from './helpers/update';
+
 import './styles/main.sass';
 import routes from './routes';
 
@@ -11,25 +13,39 @@ const infoHeader = require('./partials/header-info.handlebars');
 const { getInstance } = require('./firebase/firebase');
 const firebase = getInstance();
 
+window.onload = () => {
+  registerPartials();
+};
+
 // REGISTER THE PARTIAL COMPONENTS
 // Headers
-handlebars.registerPartial(
-  'header-nav',
-  compile(navHeader)({ title: 'RentInGent' })
-);
-handlebars.registerPartial(
-  'header-info',
-  compile(infoHeader)({ title: 'RentInGent' })
-);
-handlebars.registerPartial(
-  'footer',
-  compile(footer)({ text: 'Template made with love by GDM Ghent' })
-);
+const registerPartials = () => {
+  handlebars.registerPartial('header-nav', compile(navHeader)({}));
+  handlebars.registerPartial('header-info', compile(infoHeader)({}));
+  handlebars.registerPartial(
+    'footer',
+    compile(footer)({ text: 'Template made with love by GDM Ghent' })
+  );
+};
+
+update(compile(navHeader)({ title: 'RentInGent' }));
+
+const getPartialElement = className => {
+  update(compile(navHeader)({ title: 'RentInGent' }));
+  const domElement = document.querySelector(`.${className}`);
+  return domElement;
+};
 
 // ROUTER LOGIC TO LOAD THE CORRECT TEMPLATE WHEN NEEDED
-const router = new Navigo(window.location.origin, true);
+const root = window.location.origin;
+const useHash = true;
+const hash = '#';
+//const router = new Navigo(window.location.origin, true);
+const router = new Navigo(root, useHash, hash);
+
 function createRoutes(loggedIn, activated) {
   routes.forEach(route => {
+    console.log(route.path);
     router.on(route.path, () => {
       if (loggedIn && activated) {
         console.log('All routes available');
@@ -57,7 +73,7 @@ firebase.auth().onAuthStateChanged(user => {
       console.log({ 'User logged in but not activated': user });
     }
   } else {
-    createRoutes(false);
+    createRoutes(false, false);
     console.log({ 'User NOT logged in': user });
   }
 });
@@ -75,19 +91,14 @@ class User {
 
 // This catches all non-existing routes and redirects back to the home
 router.notFound(() => {
-  router.navigate('/404');
+  router.navigate('404');
 });
 
 // Page linking functionality (elements with href attr)
-window.onload = () => {
-  document.onclick = e => {
-    if (e.target.getAttribute('href') !== null) {
-      e.preventDefault();
-      router.navigate(e.target.getAttribute('href'));
-    }
-  };
+document.onclick = e => {
+  e.preventDefault();
+  if (e.target.getAttribute('href') !== null) {
+    console.log(e.target.getAttribute('href'));
+    router.navigate(e.target.getAttribute('href'));
+  }
 };
-
-document.querySelector('.btn__sign-out').addEventListener('click', e => {
-  firebase.auth().signOut();
-});
