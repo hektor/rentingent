@@ -4,11 +4,14 @@
 // BASE - global variables & mixins
 @import ./base/base
 
+// COMPONENTS - buttons, cards, reusables
+@import ./component/component
+
 // PAGES - page-specific css
-@import ./pages/pages
+@import ./page/page
 
 // PARTIALS - partial-specific css
-@import ./partials/partials
+@import ./partial/partial
 
 // GLOBAL CSS (+ Mediaqueries)
 *
@@ -20,18 +23,21 @@
 body
     font-size: 12px
     font-family: $font__main
-    background: #fefefe
     #app
     #map
-        top: 0
-        bottom: 0
-        width: 500px
-        height: 200px
-        text-align: initial
-        margin: 0 auto
+        position: relative
+        left: 0
+        top: 1rem
+        width: 100%
+        height: 100vh
     ::placeholder
       color: $color5
       opacity: 1
+
+ion-icon 
+
+  margin: auto
+  pointer-events: none
 
 input:required
 
@@ -41,7 +47,6 @@ input:required
 
   width: 100vw
   height: 100vh
-  overflow: hidden
 
 //  ##Device = Desktops
 //  ##Screen = 1281px to higher resolution desktops

@@ -1,19 +1,17 @@
 .zoek-kot__container
 
-    @include flex-column
     z-index: 1
     position: relative
-    color: $color__secondary_dark
-    background: $gradient__dark
-    margin-top: 1rem
 
 .kot
 
     display: flex
     flex-direction: column
-    margin: 1rem
+    flex-wrap: wrap
     padding: 1rem
     background: $color__w
+    color: $color__secondary_dark
+    border: 1px solid green
 
     &__header
         
@@ -36,7 +34,6 @@
     flex-direction: row
     justify-content: space-between
     margin: 0 1rem
-    padding: 1rem
     border: 1px solid red
 
     .zoek-kot__search
@@ -85,4 +82,15 @@
             color: #000
             @include animation__glow
 
+.kot__details
+
+    visibility: hidden
+    z-index: 100
+    position: absolute
+    left: 0
+    top: 0
+    width: 100%
+    height: 100%
+    border: none
+    background: $gradient__dark
     
