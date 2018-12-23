@@ -1,7 +1,7 @@
 <div class="container">
-  {{> header-nav }}
+  {{> header-info }}
   <div class="header__background_cirlce"></div>
-  <div class="home__container">
+  <div class="container__page home__container">
     <h1 class="home__greeting">
       Welcome,<br>
       {{#if user}}{{user}}
@@ -9,17 +9,36 @@
       {{/if}}.
       <ion-icon name="school" size="large"></ion-icon>
     </h1>
+    <button class="btn btn__sign-out">
+      <ion-icon name="log-out" size="large"></ion-icon>
+    </button>
     <p class="home__info">
       What would you <br>like to do?
     </p>
-    {{!-- {{#if}} --}}
     <nav class="home__nav">
-      <a href="/about" data-path>About</a><br />
-      <a href="/firebase" data-path>Firebase</a><br />
-      <a href="/mapbox" data-path>Mapbox</a><br />
-      <a href="/404" data-path>404</a><br>
-      <a href="/zoek-kot" data-path>ZOEK EEN KOT</a>
+      <a href="">
+        <ion-icon name="star" size="large"></ion-icon>
+        Favorieten
+      </a>
+      <a class="home__nav__btn" href="mapbox" data-path>
+        <ion-icon name="pin" size="large"></ion-icon>
+        Kotenkaart
+      </a>
+      <a class="home__nav__btn " href="">
+        <ion-icon name="text" size="large"></ion-icon>
+        Berichten
+      </a>
+      <a class="home__nav__btn" href="zoek-kot" data-path>
+        <ion-icon name="search" size="large"></ion-icon>
+        Koten
+      </a>
     </nav>
-    {{!-- {{/if}} --}}
+    <br>
+    <a class="home__nav__btn" href="404" data-path>404</a>
+    <br>
+    <a class="home__nav__btn" href="about" data-path>About</a>
+    <br>
+    <a class="home__nav__btn" href="firebase" data-path>Firebase</a>
+    <br>
   </div>
 </div>

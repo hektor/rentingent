@@ -1,7 +1,9 @@
 {{> header-nav }}
 <div class="container">
-  <div class="zoek-kot__container">
+  <div class="container__page zoek-kot__container">
     <div class="zoek-kot__options">
+      <div class="zoek-kot__search-switch">
+      </div>
       <div class="zoek-kot__search">
         <input class="search-box" type="text">
         <span class="search-toggle">
@@ -23,6 +25,9 @@
       <div class="kot__header">
         <h1 class="kot__name">{{this.name}}</h1>
         <h1 class="kot__address">{{this.address}}</h1>
+        <button class="btn kot__btn__add-to-favorites">
+          <ion-icon name="star" size="large"></ion-icon>
+        </button>
       </div>
       <p class="kot__city">{{this.city}}</p>
       <p class="kot__status">{{this.status}}</p>
@@ -35,12 +40,23 @@
       <p class="kot__total-price">€{{this.totalPrice}}/m</p>
       <p class="kot__type">{{this.type}}</p>
       <p class="kot__surface">{{this.surface}} m²</p>
+      <button class="btn kot__btn__more-details">
+        <ion-icon name="add-circle" size="large"></ion-icon>
+      </button>
+      <div class="kot__details">
+        <button class="btn kot__btn__less-details">
+          <ion-icon name="arrow-back" size="large"></ion-icon>
+        </button>
+        <h1 class="kot__details__title">
+          Kot details
+        </h1>
+      </div>
     </div>
     {{/each}}
   </div>
-  <div class="body">
-    This is the zoek-kot page.<br>
-    Go to <a href="/home" data-path>Home page</a>
-  </div>
+</div>
+<div class="body">
+  Go to <a href="home" data-path>Home page</a>
+</div>
 </div>
 {{> footer }}
