@@ -5,11 +5,15 @@ import update from './helpers/update';
 import './styles/main.sass';
 import routes from './routes';
 
+// Import User class
+import User from './pages/User';
+
 // Partials
 const navHeader = require('./partials/header-nav.handlebars');
 const footer = require('./partials/footer.handlebars');
 const infoHeader = require('./partials/header-info.handlebars');
 
+// Firebase
 const { getInstance } = require('./firebase/firebase');
 const firebase = getInstance();
 
@@ -45,7 +49,6 @@ const router = new Navigo(root, useHash, hash);
 
 function createRoutes(loggedIn, activated) {
   routes.forEach(route => {
-    console.log(route.path);
     router.on(route.path, () => {
       if (loggedIn && activated) {
         console.log('All routes available');
@@ -58,6 +61,7 @@ function createRoutes(loggedIn, activated) {
         routes[0].view();
         console.log('All routes blocked except login');
       }
+      router.updatePageLinks();
     });
   });
   router.resolve();
@@ -78,27 +82,7 @@ firebase.auth().onAuthStateChanged(user => {
   }
 });
 
-// @@TODO create a user class?
-class User {
-  constructor(emailVerified) {
-    this.emailVerified = emailVerified;
-  }
-  checkIfVerified() {
-    console.log(this.emailVerified ? 'Verified' : 'NOT Verified');
-    return this.emailVerified;
-  }
-}
-
 // This catches all non-existing routes and redirects back to the home
 router.notFound(() => {
   router.navigate('404');
 });
-
-// Page linking functionality (elements with href attr)
-document.onclick = e => {
-  e.preventDefault();
-  if (e.target.getAttribute('href') !== null) {
-    console.log(e.target.getAttribute('href'));
-    router.navigate(e.target.getAttribute('href'));
-  }
-};
