@@ -35,3 +35,32 @@ export default class Kot {
     ref.push(this.kot);
   }
 }
+
+class KotenGent {
+  constructor() {
+    const getKoten = () => {
+      return new Promise((resolve, reject) => {
+        database
+          .ref('/kot')
+          .once('value')
+          .then(snapshot => {
+            let koten = [];
+            snapshot.forEach(kot => {
+              koten.push(new Kot(kot.val()));
+            });
+            resolve(koten);
+          })
+          .catch(error => {
+            reject(error);
+          });
+      });
+    };
+    this.koten = getKoten();
+  }
+
+  getKoten() {
+    return this.koten;
+  }
+}
+
+export { Kot, KotenGent };
