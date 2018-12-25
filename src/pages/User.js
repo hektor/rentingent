@@ -19,7 +19,6 @@ export default class User {
   getUserType() {
     if (this.uid) {
       database.ref(`/user/${this.uid}`).on('value', snapshot => {
-        console.log(this.user);
         localStorage.setItem('currentUserType', snapshot.val().user_type);
       });
     }
