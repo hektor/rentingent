@@ -5,7 +5,6 @@ const database = firebase.database();
 
 export default class Kot {
   constructor(kot) {
-    // kot constructor function
     this.kot = kot;
     this.name = kot['Naam'];
     this.status = kot['Status'];
@@ -34,33 +33,42 @@ export default class Kot {
     const ref = database.ref('kot/');
     ref.push(this.kot);
   }
+  getTotalPrice() {
+    return this.totalPrice;
+  }
 }
 
-class KotenGent {
+class Koten {
   constructor() {
-    const getKoten = () => {
-      return new Promise((resolve, reject) => {
-        database
-          .ref('/kot')
-          .once('value')
-          .then(snapshot => {
-            let koten = [];
-            snapshot.forEach(kot => {
-              koten.push(new Kot(kot.val()));
-            });
-            resolve(koten);
-          })
-          .catch(error => {
-            reject(error);
-          });
-      });
-    };
-    this.koten = getKoten();
+    this.koten = [];
   }
 
-  getKoten() {
-    return this.koten;
+  getAllKoten() {
+    return new Promise((resolve, reject) => {
+      database
+        .ref('/kot')
+        .once('value')
+        .then(snapshot => {
+          let koten = [];
+          snapshot.forEach(kot => {
+            koten.push(new Kot(kot.val()));
+            this.koten.push(kot.val());
+          });
+          resolve(koten);
+        })
+        .catch(error => {
+          reject(error);
+        });
+    });
+  }
+
+  sortByPrice() {
+    return this.getAllKoten().then(koten => {
+      return koten.sort((a, b) =>
+        a.totalPrice > b.totalPrice ? 1 : b.totalPrice > a.totalPrice ? -1 : 0
+      );
+    });
   }
 }
 
-export { Kot, KotenGent };
+export { Kot, Koten };
