@@ -17,7 +17,6 @@ export default () => {
   firebase.auth().onAuthStateChanged(user => {
     if (user) {
       router.navigate('/home');
-      console.log(router);
     } else {
       router.navigate('/');
     }
@@ -79,8 +78,7 @@ export default () => {
         .auth()
         .createUserWithEmailAndPassword(emailEl.value, passwordEl.value)
         .then(response => {
-          const user = response.user;
-          addUserToDatabase(user);
+          addUserToDatabase(response.user);
         })
         // catch errors from auth promise
         .catch(error => {
