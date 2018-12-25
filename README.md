@@ -78,3 +78,13 @@ The Web API Key and Project ID can be found here:
   - Een lijst met favoriete koten bekijken
 - Social Media
   - Een kot delen op social media
+
+---
+
+## NOTES
+
+## TODO
+
+#zoek-kot
+
+- fix event listeners after sort select
