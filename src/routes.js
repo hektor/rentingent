@@ -20,3 +20,18 @@ export default [
   { path: '/messages', view: MessagesView },
   { path: '/404', view: pageNotFoundView }
 ];
+
+const nonAuthRoutes = [
+  { path: '/', view: AuthView },
+  { path: '/about', view: ZoekKotView },
+  { path: '/404', view: HomeView }
+];
+
+const nonActivatedRoutes = [
+  { path: '/', view: AuthView },
+  { path: '/home', view: HomeView },
+  { path: '/about', view: ZoekKotView },
+  { path: '/404', view: HomeView }
+];
+
+export { nonAuthRoutes, nonActivatedRoutes };

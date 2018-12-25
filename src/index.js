@@ -51,12 +51,14 @@ window.onload = () => {
     if (user !== null) {
       localStorage.setItem('currentUser', JSON.stringify(user));
     } else {
-      localStorage.clear();
+      router.navigate('/');
+      routes[0].view();
+      //router.on('/', route.view());
     }
   });
 };
 
-// ROUTER LOGIC TO LOAD THE CORRECT TEMPLATE WHEN NEEDED
+// Router logic to load the correct template when needed
 const router = new Navigo(window.location.origin, true);
 const initRouter = () => {
   routes.forEach(route => {
@@ -68,9 +70,9 @@ const initRouter = () => {
         console.log('All routes available but please activate');
         route.view();
       } else {
-        router.navigate('/');
-        routes[0].view();
-        console.log('All routes blocked except login');
+        // router.navigate('/');
+        // routes[0].view();
+        // console.log('All routes blocked except login');
       }
       router.updatePageLinks();
     });
