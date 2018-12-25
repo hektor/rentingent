@@ -6,6 +6,7 @@ import KotToevoegenView from './pages/kot-toevoegen';
 import AboutView from './pages/about';
 import FirebaseView from './pages/firebase-example';
 import MapboxView from './pages/mapbox-example';
+import MessagesView from './pages/messages';
 import pageNotFoundView from './pages/404';
 
 export default [
@@ -16,5 +17,6 @@ export default [
   { path: '/about', view: AboutView },
   { path: '/firebase', view: FirebaseView },
   { path: '/mapbox', view: MapboxView },
+  { path: '/messages', view: MessagesView },
   { path: '/404', view: pageNotFoundView }
 ];
