@@ -73,6 +73,19 @@ class Koten {
       );
     });
   }
+  sortBySurface(order) {
+    return this.getAllKoten().then(koten => {
+      return koten.sort((a, b) =>
+        a.surface > b.surface ? order : b.surface > a.surface ? -order : 0
+      );
+    });
+  }
+
+  filterByType(byType) {
+    return this.getAllKoten().then(koten => {
+      return koten.filter(({ type }) => type.includes(byType));
+    });
+  }
 }
 
 export { Kot, Koten };

@@ -40,20 +40,23 @@ export default () => {
             });
             break;
           case 'By type':
-            console.log('type');
+            koten.filterByType('Kamer').then(koten => {
+              console.log(koten);
+              update(compile(zoekKotTemplate)({ koten }));
+            });
             break;
-          case 'By surface':
-            console.log('surface');
+          case 'By surface (ascending)':
+            koten.sortBySurface(1).then(koten => {
+              update(compile(zoekKotTemplate)({ koten }));
+            });
+            break;
+          case 'By surface (descending)':
+            koten.sortBySurface(-1).then(koten => {
+              update(compile(zoekKotTemplate)({ koten }));
+            });
             break;
         }
       });
     });
-
-  // - Type
-  // - Huurprijs (van x - x)
-  // - Oppervlakte
   // - Afstand (van x - x) @@@ pass in distance
-
-  // getAllKoten().then(koten => {
-  //   update(compile(zoekKotTemplate)({ koten }));
 };

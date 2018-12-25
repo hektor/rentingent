@@ -63,9 +63,9 @@ The Web API Key and Project ID can be found here:
     - Sorteerbaar op afstand
   - Kaart te tonen met alle studentenkoten
   - Filteren
-    - Type
-    - Huurprijs (van x - x)
-    - Oppervlakte
+    - ~~Type~~
+    - ~~Huurprijs (van x - x)~~
+    - ~~Oppervlakte~~
     - Afstand (van x - x)
   - Mogelijk om een detailpagina van een kot te bekijken
 
@@ -88,3 +88,4 @@ The Web API Key and Project ID can be found here:
 #zoek-kot
 
 - fix event listeners after sort select
+- Kot: combine sortByPrice & sortBySurface & ... in sortBy method with property param
