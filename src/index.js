@@ -10,50 +10,61 @@ import User from './pages/User';
 
 // Partials
 const navHeader = require('./partials/header-nav.handlebars');
-const footer = require('./partials/footer.handlebars');
 const infoHeader = require('./partials/header-info.handlebars');
+const footer = require('./partials/footer.handlebars');
 
 // Firebase
 const { getInstance } = require('./firebase/firebase');
 const firebase = getInstance();
 
+const currentUser = new User();
+const userType = currentUser.getUserType();
+
+// Register partials
+handlebars.registerPartial('header-nav', compile(navHeader)({}));
+handlebars.registerPartial('header-info', compile(infoHeader)({}));
+handlebars.registerPartial(
+  'footer',
+  compile(footer)({ text: 'Template made with love by GDM Ghent' })
+);
+
 window.onload = () => {
-  registerPartials();
-};
+  initRouter();
+  // GETTING CURRENT USER FROM INDEXEDDB (FIREBASE AUTO STORES IT THERE)
 
-// REGISTER THE PARTIAL COMPONENTS
-// Headers
-const registerPartials = () => {
-  handlebars.registerPartial('header-nav', compile(navHeader)({}));
-  handlebars.registerPartial('header-info', compile(infoHeader)({}));
-  handlebars.registerPartial(
-    'footer',
-    compile(footer)({ text: 'Template made with love by GDM Ghent' })
-  );
-};
+  // const request = window.indexedDB.open('firebaseLocalStorageDb');
+  // request.onerror = error => {
+  //   console.log(error.target.errorCode);
+  // };
+  // request.onsuccess = e => {
+  //   const db = e.target.result;
+  //   db
+  //     .transaction('firebaseLocalStorage')
+  //     .objectStore('firebaseLocalStorage')
+  //     .openCursor().onsuccess = function(event) {
+  //     const cursor = event.target.result;
+  //     const user = cursor.value.value;
+  //   };
+  // };
 
-update(compile(navHeader)({ title: 'RentInGent' }));
-
-const getPartialElement = className => {
-  update(compile(navHeader)({ title: 'RentInGent' }));
-  const domElement = document.querySelector(`.${className}`);
-  return domElement;
+  firebase.auth().onAuthStateChanged(user => {
+    if (user !== null) {
+      localStorage.setItem('currentUser', JSON.stringify(user));
+    } else {
+      localStorage.clear();
+    }
+  });
 };
 
 // ROUTER LOGIC TO LOAD THE CORRECT TEMPLATE WHEN NEEDED
-const root = window.location.origin;
-const useHash = true;
-const hash = '#';
-//const router = new Navigo(window.location.origin, true);
-const router = new Navigo(root, useHash, hash);
-
-function createRoutes(loggedIn, activated) {
+const router = new Navigo(window.location.origin, true);
+const initRouter = () => {
   routes.forEach(route => {
     router.on(route.path, () => {
-      if (loggedIn && activated) {
+      if (currentUser.getUser() && currentUser.getUser().emailVerified) {
         console.log('All routes available');
         route.view();
-      } else if (loggedIn) {
+      } else if (currentUser.getUser()) {
         console.log('All routes available but please activate');
         route.view();
       } else {
@@ -65,24 +76,11 @@ function createRoutes(loggedIn, activated) {
     });
   });
   router.resolve();
-}
 
-firebase.auth().onAuthStateChanged(user => {
-  if (user) {
-    if (user.emailVerified) {
-      createRoutes(true, true);
-      console.log({ 'User logged in': user });
-    } else if (user.emailVerified !== true) {
-      createRoutes(true, false);
-      console.log({ 'User logged in but not activated': user });
-    }
-  } else {
-    createRoutes(false, false);
-    console.log({ 'User NOT logged in': user });
-  }
-});
-
-// This catches all non-existing routes and redirects back to the home
-router.notFound(() => {
-  router.navigate('404');
-});
+  // This catches all non-existing routes and redirects back to the home
+  router.notFound(() => {
+    router.navigate('404');
+  });
+  router.navigate(window.location.hash.split('/')[1]);
+};
+export { router };
