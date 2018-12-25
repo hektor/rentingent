@@ -11,8 +11,7 @@ const mapTemplate = require('../templates/page-with-map.handlebars');
 
 export default () => {
   // Data to be passed to the template
-  const title = 'Mapbox example';
-  update(compile(mapTemplate)({ title }));
+  update(compile(mapTemplate)({}));
 
   // Mapbox code
   if (config.mapBoxToken) {
@@ -20,9 +19,9 @@ export default () => {
     // eslint-disable-next-line no-unused-vars
     const map = new mapboxgl.Map({
       container: 'map',
-      center: [-74.5, 40],
-      style: 'mapbox://styles/mapbox/streets-v9',
-      zoom: 1
+      center: [3.71667, 51.05],
+      style: 'mapbox://styles/hektr/cjq3v4ble6mqg2sn1789jzans', // added custom mapbox studio style
+      zoom: 10
     });
   } else {
     console.error('Mapbox will crash the page if no access token is given.');
