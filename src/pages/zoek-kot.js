@@ -29,15 +29,20 @@ export default () => {
       filterByEl.addEventListener('change', e => {
         const filterByValue = filterByEl.options[filterByEl.selectedIndex].text;
         switch (filterByValue) {
-          case 'Price':
-            koten.sortByPrice().then(koten => {
+          case 'By price (ascending)':
+            koten.sortByPrice(1).then(koten => {
               update(compile(zoekKotTemplate)({ koten }));
             });
             break;
-          case 'Type':
+          case 'By price (descending)':
+            koten.sortByPrice(-1).then(koten => {
+              update(compile(zoekKotTemplate)({ koten }));
+            });
+            break;
+          case 'By type':
             console.log('type');
             break;
-          case 'Surface':
+          case 'By surface':
             console.log('surface');
             break;
         }

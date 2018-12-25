@@ -62,10 +62,14 @@ class Koten {
     });
   }
 
-  sortByPrice() {
+  sortByPrice(order) {
     return this.getAllKoten().then(koten => {
       return koten.sort((a, b) =>
-        a.totalPrice > b.totalPrice ? 1 : b.totalPrice > a.totalPrice ? -1 : 0
+        a.totalPrice > b.totalPrice
+          ? order
+          : b.totalPrice > a.totalPrice
+          ? -order
+          : 0
       );
     });
   }
