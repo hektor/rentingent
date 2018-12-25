@@ -3,7 +3,7 @@ import { compile } from 'handlebars';
 import update from '../helpers/update';
 
 // Import Kot class
-import Kot from './Kot';
+import { Kot } from './Kot';
 
 // Import the template to use
 const zoekKotTemplate = require('../templates/zoek-kot.handlebars');
@@ -49,16 +49,32 @@ export default () => {
     // - Afstand (van x - x) @@@ pass in distance
   };
 
-  const ref = database.ref('/kot');
-  ref.once('value', snapshot => {
-    let koten = [];
-    snapshot.forEach(kot => {
-      const kotKey = kot.key;
-      const kotData = kot.val();
-      koten.push(new Kot(kotData));
-    });
-    // Pass koten to template - Return the compiled template to the router
+  getKoten().then(koten => {
     update(compile(zoekKotTemplate)({ koten }));
-    filterKoten(koten);
   });
 };
+
+const getKoten = () => {
+  return new Promise((resolve, reject) => {
+    database
+      .ref('/kot')
+      .once('value')
+      .then(snapshot => {
+        let koten = [];
+        snapshot.forEach(kot => {
+          koten.push(new Kot(kot.val()));
+        });
+        resolve(koten);
+      })
+      .catch(error => {
+        reject(error);
+      });
+  });
+};
+
+import { KotenGent } from './Kot';
+const koten = new KotenGent();
+const koten2 = koten.getKoten();
+koten2.then(kot => {
+  console.log(kot);
+});
