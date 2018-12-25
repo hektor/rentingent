@@ -40,7 +40,7 @@ The Web API Key and Project ID can be found here:
 - ~~Registreren en inloggen met email/password~~
 - **EXTRA:** Registreren en inloggen met Google account
 - Beheer studentenkot
-  - Studentenkot toevoegen
+  - ~~Studentenkot toevoegen~~
     - **EXTRA:** Er kunnen enkel studentenkoten worden toegevoegd waarvan het adres zich in de Gentse kotzone bevindt.  
       Gebruik hiervoor de kotzones van [https://data.stad.gent/data/42 (Koppelingen naar een externe site.)Koppelingen naar een externe site.](https://data.stad.gent/data/42) en sla de zones op in de localstorage van de client
   - Studentenkot -waarvan hij/zij de eigenaar is- bewerken
