@@ -85,4 +85,5 @@ const initRouter = () => {
   });
   router.navigate(window.location.hash.split('/')[1]);
 };
+
 export { router };
