@@ -1,19 +1,27 @@
-// Firebase
-
+// // Firebase
 const { getInstance } = require('../firebase/firebase');
 const firebase = getInstance();
+const database = firebase.database();
 
 export default class User {
   constructor() {
-    this.user = null;
+    this.user = JSON.parse(localStorage.getItem('currentUser'));
+    this.uid = this.user ? this.user.uid : null;
+    this.userType = this.getUserType();
+    // this.userEmail = user.email;
+    // this.userEmailVerified = user.emailVerified;
   }
 
-  setCurrentUser(user) {
-    this.user = user;
-  }
-
-  getCurrentUser() {
-    console.log(this.user);
+  getUser() {
     return this.user;
+  }
+
+  getUserType() {
+    if (this.uid) {
+      database.ref(`/user/${this.uid}`).on('value', snapshot => {
+        console.log(this.user);
+        localStorage.setItem('currentUserType', snapshot.val().user_type);
+      });
+    }
   }
 }
