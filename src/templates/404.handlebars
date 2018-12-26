@@ -4,6 +4,9 @@
             <div class="container__error">
                 <h1 class="title title__404">404</h1>
                 <h2 class="title title__404__message">Sorry,<br> we could not find what you're looking for.</h2>
+                {{#if weather}}
+                <p>While you're here, we have the weather for Gent tomorrow: {{ weather }}</p>
+                {{/if}}
                 <a class="title title__404__link">
                     <ion-icon class="icon icon__404" name="home" size="large"></ion-icon>
                 </a>
