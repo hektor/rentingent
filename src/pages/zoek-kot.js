@@ -24,7 +24,7 @@ export default () => {
     .then(koten => {
       update(compile(zoekKotTemplate)({ koten }));
     })
-    .then(e => {
+    .then(() => {
       const filterByEl = document.querySelector('.zoek-kot__filter__dropdown');
       filterByEl.addEventListener('change', e => {
         const filterByValue = filterByEl.options[filterByEl.selectedIndex].text;
@@ -40,7 +40,7 @@ export default () => {
             });
             break;
           case 'By type':
-            koten.filterByType('Kamer').then(koten => {
+            koten.filterByType('Studio').then(koten => {
               console.log(koten);
               update(compile(zoekKotTemplate)({ koten }));
             });
@@ -58,5 +58,6 @@ export default () => {
         }
       });
     });
+  // - Type
   // - Afstand (van x - x) @@@ pass in distance
 };
