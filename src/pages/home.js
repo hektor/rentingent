@@ -1,8 +1,6 @@
 // Only import the compile function from handlebars instead of the entire library
 import { compile } from 'handlebars';
 import update from '../helpers/update';
-import '../index';
-import { router } from '../index';
 
 const { getInstance } = require('../firebase/firebase');
 const firebase = getInstance();
@@ -29,7 +27,6 @@ export default () => {
       .signOut()
       .then(() => {
         localStorage.clear();
-        router.navigate('/');
       });
   });
 };

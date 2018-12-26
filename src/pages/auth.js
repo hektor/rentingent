@@ -1,8 +1,6 @@
 // Only import the compile function from handlebars instead of the entire library
-import Navigo from 'navigo';
 import { compile } from 'handlebars';
 import update from '../helpers/update';
-import { router } from '../index';
 
 // Import the template to use
 const authTemplate = require('../templates/auth.handlebars');
@@ -14,16 +12,6 @@ const database = firebase.database();
 
 // Router
 export default () => {
-  firebase.auth().onAuthStateChanged(user => {
-    if (user) {
-      router.navigate('/home');
-      location.reload();
-    } else {
-      router.navigate('/');
-      console.log('please log in');
-    }
-  });
-
   update(compile(authTemplate)({}));
   // Update DOM and get DOM elements
   const signTypeBtn = document.querySelector('.auth__form__header__indicator');
@@ -61,9 +49,7 @@ export default () => {
     firebase
       .auth()
       .signInWithEmailAndPassword(emailEl.value, passwordEl.value)
-      .then(response => {
-        console.log(response.user);
-      })
+      .then(response => {})
       .catch(error => {
         formHelperEl.setAttribute('class', 'auth__form__helper_active');
         formHelperEl.textContent = error.message;

@@ -11,29 +11,14 @@ import MessagesView from './pages/messages';
 import pageNotFoundView from './pages/404';
 
 export default [
-  { path: '/', view: AuthView },
   { path: '/home', view: HomeView },
+  { path: '/auth', view: AuthView },
   { path: '/zoek-kot', view: ZoekKotView },
-  { path: 'kot-toevoegen', view: KotToevoegenView },
-  { path: 'swipe-kot', view: SwipeKotView },
+  { path: '/kot-toevoegen', view: KotToevoegenView },
+  { path: '/swipe-kot', view: SwipeKotView },
   { path: '/about', view: AboutView },
   { path: '/firebase', view: FirebaseView },
   { path: '/mapbox', view: MapboxView },
   { path: '/messages', view: MessagesView },
   { path: '/404', view: pageNotFoundView }
 ];
-
-// const nonAuthRoutes = [
-//   { path: '/', view: AuthView },
-//   { path: '/about', view: ZoekKotView },
-//   { path: '/404', view: HomeView }
-// ];
-
-// const nonActivatedRoutes = [
-//   { path: '/', view: AuthView },
-//   { path: '/home', view: HomeView },
-//   { path: '/about', view: ZoekKotView },
-//   { path: '/404', view: HomeView }
-// ];
-
-// export { nonAuthRoutes, nonActivatedRoutes };
