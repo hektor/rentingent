@@ -32,6 +32,7 @@ export default class Kot {
   shareOnSocial() {}
   addToDatabase() {
     const ref = database.ref('kot/');
+    const kot = this.kot;
     ref.push(this.kot);
   }
 
