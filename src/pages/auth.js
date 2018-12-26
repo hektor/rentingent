@@ -3,7 +3,7 @@ import { compile } from 'handlebars';
 import update from '../helpers/update';
 
 // Import the template to use
-const authTemplate = require('../templates/auth.handlebars');
+const authTemplate = require('../templates/auth.hbs');
 
 // Firebase
 const { getInstance } = require('../firebase/firebase');

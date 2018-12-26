@@ -7,7 +7,7 @@ import { Kot } from './Kot';
 import { Koten } from './Kot';
 
 // Import the template to use
-const swipeKotTemplate = require('../templates/swipe-kot.handlebars');
+const swipeKotTemplate = require('../templates/swipeview.hbs');
 
 // Firebase
 const { getInstance } = require('../firebase/firebase');

@@ -6,8 +6,7 @@ const { getInstance } = require('../firebase/firebase');
 const firebase = getInstance();
 
 // Import the template to use
-const studentHomeTemplate = require('../templates/student-home.handlebars');
-const kotbaasHomeTemplate = require('../templates/kotbaas-home.handlebars');
+const homeTemplate = require('../templates/home.hbs');
 
 export default () => {
   // Data to be passed to the template
@@ -19,7 +18,7 @@ export default () => {
 
   // check if user is activated - if not, load activation-home.handlebars
 
-  update(compile(studentHomeTemplate)({ user }));
+  update(compile(homeTemplate)({ user }));
   const logOutBtn = document.querySelector('.btn__sign-out');
   logOutBtn.addEventListener('click', e => {
     firebase

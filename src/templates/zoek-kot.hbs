@@ -1,7 +1,7 @@
 <div class="container">
   {{>header-nav}}
   <div class="container__page zoek-kot__container">
-    <a class="search__toggle-search-interface" href="/zoek-kot/swipe" data-navigo>Swipe view</a>
+    <a class="search__toggle-search-interface" href="/swipeview" data-navigo>Swipe view</a>
     <div class="zoek-kot__options">
       <div class="zoek-kot__search-switch">
       </div>
@@ -23,6 +23,9 @@
         </select>
       </div>
     </div>
+    {{#if loading}}
+    <h1 class="loader">loading</h1>
+    {{/if}}
     {{#each koten}}
     <div class="kot">
       <div class="kot__header">

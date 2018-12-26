@@ -2,11 +2,11 @@
 import { compile } from 'handlebars';
 import update from '../helpers/update';
 
+// Import the template to use
+const kotToevoegenTemplate = require('../templates/kot-toevoegen.hbs');
+
 // Import Kot constructor function
 import Kot from './Kot';
-
-// Import the template to use
-const kotToevoegenTemplate = require('../templates/kot-toevoegen.handlebars');
 
 export default () => {
   // Data to be passed to the template

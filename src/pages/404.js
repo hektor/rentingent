@@ -4,7 +4,7 @@ import update from '../helpers/update';
 import config from '../config';
 
 // Import the template to use
-const pageNotFoundTemplate = require('../templates/404.handlebars');
+const pageNotFoundTemplate = require('../templates/404.hbs');
 
 export default () => {
   // Data to be passed to the template

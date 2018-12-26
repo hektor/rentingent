@@ -2,12 +2,12 @@
 import { compile } from 'handlebars';
 import update from '../helpers/update';
 
+// Import the template to use
+const zoekKotTemplate = require('../templates/zoek-kot.hbs');
+
 // Import Kot class
 import { Kot } from './Kot';
 import { Koten } from './Kot';
-
-// Import the template to use
-const zoekKotTemplate = require('../templates/zoek-kot.handlebars');
 
 // Firebase
 const { getInstance } = require('../firebase/firebase');
@@ -18,6 +18,8 @@ const database = firebase.database();
 import { router } from '../index';
 
 export default () => {
+  let loading;
+  update(compile(zoekKotTemplate)({ loading }));
   let koten = new Koten();
   koten
     .getAllKoten()

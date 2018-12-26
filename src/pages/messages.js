@@ -3,7 +3,7 @@ import { compile } from 'handlebars';
 import update from '../helpers/update';
 
 // Import the template to use
-const messagesTemplate = require('../templates/messages.handlebars');
+const messagesTemplate = require('../templates/messages.hbs');
 
 // Firebase
 const { getInstance } = require('../firebase/firebase');

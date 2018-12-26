@@ -38,7 +38,7 @@ module.exports = (env, argv) => {
           }
         },
         {
-          test: /\.handlebars$/,
+          test: /\.hbs$/,
           loader: 'text-loader'
         },
         {
