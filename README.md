@@ -61,7 +61,7 @@ The Web API Key and Project ID can be found here:
     - Sorteer de koten van dicht naar ver (hogeschool/uni -> kot)
   - ~~Lijst tonen met alle studentenkoten~~
     - Sorteerbaar op afstand
-  - Kaart te tonen met alle studentenkoten
+  - ~~Kaart te tonen met alle studentenkoten~~
   - Filteren
     - ~~Type~~
     - ~~Huurprijs (van x - x)~~
