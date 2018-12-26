@@ -50,6 +50,7 @@ window.onload = () => {
   firebase.auth().onAuthStateChanged(user => {
     if (user !== null) {
       localStorage.setItem('currentUser', JSON.stringify(user));
+      router.navigate('/home');
     } else {
       router.navigate('/');
       routes[0].view();
