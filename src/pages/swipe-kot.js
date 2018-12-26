@@ -7,7 +7,7 @@ import { Kot } from './Kot';
 import { Koten } from './Kot';
 
 // Import the template to use
-const zoekKotTemplate = require('../templates/swipe-kot.handlebars');
+const swipeKotTemplate = require('../templates/swipe-kot.handlebars');
 
 // Firebase
 const { getInstance } = require('../firebase/firebase');
@@ -18,8 +18,29 @@ const database = firebase.database();
 import { router } from '../index';
 
 export default () => {
-  let koten = new Koten();
-  koten.getAllKoten().then(koten => {
-    update(compile(zoekKotTemplate)({ koten }));
-  });
+  let i = 0;
+  function swipeView(index) {
+    let koten = new Koten();
+    if (i >= koten.length) {
+      update(compile(swipeKotTemplate));
+    }
+    koten.getAllKoten().then(koten => {
+      i = index;
+      let kot = koten[i];
+      update(compile(swipeKotTemplate)({ kot }));
+      const kotLikeBtn = document.querySelector('.btn__swipe-kot__like');
+      const kotDislikeBtn = document.querySelector('.btn__swipe-kot__dislike');
+      kotLikeBtn.addEventListener('click', e => {
+        i += 1;
+        swipeView(i);
+        console.log(i, { like: e });
+      });
+      kotDislikeBtn.addEventListener('click', e => {
+        i += 1;
+        swipeView(i);
+        console.log(i, { dislike: e });
+      });
+    });
+  }
+  swipeView(i);
 };

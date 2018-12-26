@@ -1,6 +1,60 @@
 {{>header-nav}}
 <div class="container">
-    <div class="swipe-kot__container page__container">
+    <div class="swipe-kot__container container__page">
         <h1>Swipe kot</h1>
+        {{#if kot}}
+        <div class="kot">
+            <div class="kot__header">
+                <h1 class="kot__name">{{kot.name}}</h1>
+                <h1 class="kot__address">{{kot.address}}</h1>
+                <button class="btn kot__btn__add-to-favorites">
+                    <ion-icon name="star" size="large"></ion-icon>
+                </button>
+            </div>
+            <div class="kot__body">
+                <p class="kot__city">{{kot.city}}</p>
+                <p class="kot__status">{{kot.status}}</p>
+                <p class="kot__warranty"><span>Waarborg</span>€{{kot.warranty}}</span></p>
+                <p class="kot__floor">{{kot.floor}}</p>
+                <p class="kot__has-toilet">{{kot.hasToilet}}</p>
+                <p class="kot__has-kitchen"> {{kot.hasKitchen}}</p>
+                <p class="kot__has-shower"> {{kot.hasShower}}</p>
+                <p class="kot__has-furniture"> {{kot.hasFurniture}}</p>
+                <p class="kot__total-price"><span>Totale prijs</span>€{{kot.totalPrice}}/m</p>
+                <p class="kot__type">{{kot.type}}</p>
+                <p class="kot__surface">{{kot.surface}} m²</p>
+                <button class="btn kot__btn__more-details">
+                    <ion-icon name="add-circle" size="large"></ion-icon>
+                </button>
+            </div>
+            <div class="kot__details">
+                <button class="btn kot__btn__less-details">
+                    <ion-icon name="arrow-back" size="large"></ion-icon>
+                </button>
+                <h1 class="kot__details__title">
+                    Kot details
+                </h1>
+            </div>
+        </div>
+        <div class="swipe-kot__evaluation">
+            <button class="btn btn__evaluation btn__swipe-kot__like">
+                <ion-icon name="heart" size="large"></ion-icon>
+            </button>
+            <button class="btn btn__evaluation btn__swipe-kot__dislike">
+                <ion-icon name="heart-dislike" size="large"></ion-icon>
+            </button>
+        </div>
+        {{else}}
+        <h1>Geen koten meer in de buurt</h1>
+        <a href="" data-navigo>Favorieten bekijken?</a>
+        <div class="swipe-kot__finished">
+            <button class="btn btn__evaluation__disabled btn__swipe-kot__like" disabled>
+                <ion-icon name="heart" size="large"></ion-icon>
+            </button>
+            <button class="btn btn__evaluation__disabled btn__swipe-kot__dislike" disabled>
+                <ion-icon name="heart-dislike" size="large"></ion-icon>
+            </button>
+        </div>
+        {{/if}}
     </div>
 </div>
