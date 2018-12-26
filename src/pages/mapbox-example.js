@@ -48,38 +48,18 @@ export default () => {
           .send()
           .then(response => {
             const match = response.body;
+            //const description = response.query.join(' ');
+            var popup = new mapboxgl.Popup().setHTML(
+              `<h3>Adres</h3><p>${address}</p>`
+            );
+
             const marker = new mapboxgl.Marker()
               .setLngLat(match.features[0].center)
+              .setPopup(popup)
               .addTo(map);
           });
       });
     }
-
-    map.on('click', function(e) {
-      var features = map.queryRenderedFeatures(e.point, {
-        layers: ['poi_label'] // replace this with the name of the layer
-      });
-
-      if (!features.length) {
-        return;
-      }
-
-      var feature = features[0];
-
-      var popup = new mapboxgl.Popup({ offset: [0, -15] })
-        .setLngLat([3.725, 51.05])
-        .setHTML(
-          '<h3>' +
-            feature.properties.title +
-            'Hello world' +
-            '</h3><p>' +
-            feature.properties.description +
-            'lololol' +
-            '</p>'
-        )
-        .setLngLat([3.725, 51.05])
-        .addTo(map);
-    });
 
     const marker = new mapboxgl.Marker().setLngLat([3.725, 51.05]).addTo(map);
   } else {
