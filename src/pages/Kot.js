@@ -20,19 +20,21 @@ export default class Kot {
     this.hasKitchen = kot['Privé keuken'];
     this.hasFurniture = kot['Opties'];
     // this.pictures = foto's van het kot;
-    this.address = kot['Straat'] + ' ' + kot['Huisummer'];
     this.city = kot['Plaats'];
+    this.address = `${kot['Straat']} ${kot['Huisummer']}, ${kot['Plaats']}`;
     // this.coords = coords;
     // this.numOfRoomsInBuilding = numOfRoomsInBuilding;
     // this.description = propertyOwner;
     // this.propertyOwner = propertyOwner;
   }
+
   addToFavorites() {}
   shareOnSocial() {}
   addToDatabase() {
     const ref = database.ref('kot/');
     ref.push(this.kot);
   }
+
   getTotalPrice() {
     return this.totalPrice;
   }
@@ -73,6 +75,17 @@ class Koten {
       );
     });
   }
+
+  getAllAddreses() {
+    return this.getAllKoten().then(koten => {
+      let addresses = [];
+      koten.map(kot => {
+        addresses.push(kot.address);
+      });
+      return addresses;
+    });
+  }
+
   sortBySurface(order) {
     return this.getAllKoten().then(koten => {
       return koten.sort((a, b) =>
