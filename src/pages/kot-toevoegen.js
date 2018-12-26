@@ -17,7 +17,6 @@ export default () => {
 
   const kotAddBtn = document.querySelector('.kot__add__submit');
   kotAddBtn.addEventListener('click', e => {
-    console.log(e);
     const kot = {
       Naam: document.querySelector('.kot__name__input').value,
       Straat: document.querySelector('.kot__street__input').value,
@@ -34,6 +33,21 @@ export default () => {
       Type: document.querySelector('.kot__type__input').value,
       Oppervlakte: document.querySelector('.kot__surface__input').value
     };
-    new Kot(kot).addToDatabase();
+    const kotAddMessage = document.querySelector('.kot__add__message');
+    kotAddMessage.textContent = checkFields(kot);
   });
+
+  function checkFields(kot) {
+    let message;
+    for (let field in kot) {
+      const value = kot[field];
+      if (value === '') {
+        message = 'Vul alle velden in';
+      } else {
+        new Kot(kot).addToDatabase();
+        message = 'Kot toegevoegd!';
+      }
+      return message;
+    }
+  }
 };
