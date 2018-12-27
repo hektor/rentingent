@@ -7,11 +7,12 @@
 // COMPONENTS - buttons, cards, reusables
 @import ./component/component
 
+// PARTIALS - partial-specific css
+@import ./partial/partial
+
 // PAGES - page-specific css
 @import ./page/page
 
-// PARTIALS - partial-specific css
-@import ./partial/partial
 
 // GLOBAL CSS (+ Mediaqueries)
 *
@@ -45,8 +46,10 @@ input:required
 
 .container
 
+  position: fixed
   width: 100vw
   height: 100vh
+  overflow: hidden
 
 //  ##Device = Desktops
 //  ##Screen = 1281px to higher resolution desktops
@@ -56,6 +59,7 @@ input:required
 
 //  ##Device = Laptops, Desktops
 //  ##Screen = B/w 1025px to 1280px
+    
 
 @media (min-width: 1025px) and (max-width: 1280px)
   //CSS
