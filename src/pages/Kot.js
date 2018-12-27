@@ -84,6 +84,26 @@ class Koten {
     });
   }
 
+  getAllFavourites() {
+    return new Promise((resolve, reject) => {
+      database
+        .ref('/kot')
+        .once('value')
+        .then(snapshot => {
+          let koten = [];
+          snapshot.forEach(kot => {
+            if (kot.val().favourite === true) {
+              koten.push(new Kot(kot.val(), kot.key));
+            }
+          });
+          resolve(koten);
+        })
+        .catch(error => {
+          reject(error);
+        });
+    });
+  }
+
   sortByPrice(order) {
     return this.getAllKoten().then(koten => {
       return koten.sort((a, b) =>
