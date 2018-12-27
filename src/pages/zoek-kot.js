@@ -26,6 +26,20 @@ export default () => {
           kot.addToFavourites();
         });
       });
+      const searchBoxEl = document.querySelector('.zoek-kot__search-box');
+      searchBoxEl.addEventListener('keyup', e => {
+        const term = e.target.value.toLowerCase();
+        const kotHeaders = document.querySelectorAll('.kot__header');
+        Array.from(kotHeaders).forEach(header => {
+          const name = header.firstElementChild.textContent.toLowerCase();
+          const address = header.firstElementChild.nextElementSibling.textContent.toLowerCase();
+          if (name.indexOf(term) !== -1 || address.indexOf(term) !== -1) {
+            header.parentElement.style.display = 'block';
+          } else {
+            header.parentElement.style.display = 'none';
+          }
+        });
+      });
     })
     .then(() => {
       const filterByEl = document.querySelector('.zoek-kot__filter__dropdown');
