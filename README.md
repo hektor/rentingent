@@ -72,9 +72,9 @@ The Web API Key and Project ID can be found here:
 - !Berichten
   - Berichten sturen naar kotbazen
   - Een (web) notification krijgen bij een nieuw bericht
-- Favorieten
+- ~~Favorieten~~
   - ~~Een kot toevoegen aan favorieten~~
-  - Een kot verwijderen van favorieten
+  - ~~Een kot verwijderen van favorieten~~
   - ~~Een lijst met favoriete koten bekijken~~
 - Social Media
   - Een kot delen op social media
