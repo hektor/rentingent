@@ -8,7 +8,7 @@ import { Koten } from './Kot';
 
 // Import the template to use
 const swipeKotTemplate = require('../templates/swipeview.hbs');
-
+const addToFavoritesBtn = document.querySelector('.kot__btn__add-to-favorites');
 // Firebase
 const { getInstance } = require('../firebase/firebase');
 const firebase = getInstance();
@@ -31,6 +31,7 @@ export default () => {
       const kotLikeBtn = document.querySelector('.btn__swipe-kot__like');
       const kotDislikeBtn = document.querySelector('.btn__swipe-kot__dislike');
       kotLikeBtn.addEventListener('click', e => {
+        kot.addToFavourites();
         i += 1;
         swipeView(i);
         console.log(i, { like: e });

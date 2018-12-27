@@ -25,6 +25,16 @@ export default () => {
     .getAllKoten()
     .then(koten => {
       update(compile(zoekKotTemplate)({ koten }));
+      console.log(koten);
+      const addToLikeBtns = document.querySelectorAll(
+        '.kot__btn__add-to-favorites'
+      );
+      Array.from(addToLikeBtns).forEach((addToLikeBtn, i) => {
+        addToLikeBtn.addEventListener('click', e => {
+          let kot = koten[i];
+          kot.addToFavourites();
+        });
+      });
     })
     .then(() => {
       const filterByEl = document.querySelector('.zoek-kot__filter__dropdown');
