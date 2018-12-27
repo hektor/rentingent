@@ -6,16 +6,7 @@ import update from '../helpers/update';
 const zoekKotTemplate = require('../templates/zoek-kot.hbs');
 
 // Import Kot class
-import { Kot } from './Kot';
 import { Koten } from './Kot';
-
-// Firebase
-const { getInstance } = require('../firebase/firebase');
-const firebase = getInstance();
-const database = firebase.database();
-
-// Router
-import { router } from '../index';
 
 export default () => {
   let loading;
