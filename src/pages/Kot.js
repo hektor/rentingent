@@ -4,8 +4,8 @@ const firebase = getInstance();
 const database = firebase.database();
 
 export default class Kot {
-  constructor(kot) {
-    this.kot = kot;
+  constructor(kot, key) {
+    this.key = key;
     this.name = kot['Naam'];
     this.status = kot['Status'];
     this.totalPrice = kot['Totale prijs'];
@@ -28,7 +28,26 @@ export default class Kot {
     // this.propertyOwner = propertyOwner;
   }
 
-  addToFavorites() {}
+  addToFavourites() {
+    return new Promise((resolve, reject) => {
+      database
+        .ref(`kot/${this.key}`)
+        .update({ favourite: true })
+        .then(() => resolve(null))
+        .catch(error => reject(error));
+    });
+  }
+
+  removeFromFavourites() {
+    return new Promise((resolve, reject) => {
+      database
+        .ref(`kot/${this.key}`)
+        .update({ favourite: false })
+        .then(() => resolve(null))
+        .catch(error => reject(error));
+    });
+  }
+
   shareOnSocial() {}
   addToDatabase() {
     const ref = database.ref('kot/');
@@ -54,7 +73,7 @@ class Koten {
         .then(snapshot => {
           let koten = [];
           snapshot.forEach(kot => {
-            koten.push(new Kot(kot.val()));
+            koten.push(new Kot(kot.val(), kot.key));
             this.koten.push(kot.val());
           });
           resolve(koten);
