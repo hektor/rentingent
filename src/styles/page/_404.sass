@@ -1,28 +1,27 @@
-.container__error-page
-    @include flex-column-center
-    background: $color__secondary_dark
-    background: $gradient__dark_i
-    height: 100vh
+.error
 
-.container__error
-
+    margin: 10rem auto
     background: $gradient__regular
-    width: 5rem
-    height: 5rem
-    margin: auto
-    padding: 6rem
+    width: 10rem
+    height: 10rem
     border-radius: 50%
-    border: 1px solid red
     color: $color__w
     @include animation__float
 
 .title__404
 
-    width: 100%
-    border: 1px solid red
     font-size: 5rem
+    text-align: center
 
     &__message
+
+        color: $color__secondary_dark
+        width: 10rem
+
+        &_small
+
+            font-size: $font-size__sm
+            color: $color__secondary_dark
 
 
     &__link

@@ -1,14 +1,21 @@
 .header
 
     z-index: 100
+    position: fixed
     @include flex-row
-    position: absolute
     top: 0
     left: 0
     width: 100%
     height: 5rem
     box-sizing: border-box
     padding: .5rem 2rem
+    box-shadow: $shadow__soft
+
+.header__logo
+
+    img
+        width: 2rem
+        height: 2rem
 
 .header__info
     
@@ -75,3 +82,21 @@
     border-radius: 50%
     background: $gradient__dark_half_o
     opacity: 0.8
+    transition: 1s opacity
+
+@media (min-width: 481px)
+
+    .header__background_cirlce
+
+        opacity: 0.1
+        transition: 1s opacity
+
+    // .header__item
+
+    //     color: $color__secondary_dark
+
+    // .header__info
+
+    //     a
+        
+    //         color: $color__secondary_dark

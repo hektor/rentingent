@@ -1,27 +1,19 @@
-.home__container
+.home__header
 
-    @include flex-column
-    position: relative
-    height: 100vh
-    padding: 2rem
-    box-sizing: border-box
-    //border: 1px solid green
+    @include flex-row
 
-.home__greeting
+    &__greet
 
-    margin-top: calc(50% - 4rem)
-    height: auto
-    width: 100%
-    box-sizing: border-box
-    font-family: $font__title
-    font-size: $font-size__lg + .62rem
-    color: $color__secondary_dark
-    line-height: 2.5rem
-    //border: 1px solid red
+        margin-top: 5rem
+        width: 100%
+        box-sizing: border-box
+        font-family: $font__title
+        font-size: $font-size__lg + .62rem
+        color: $color__secondary_dark
+        line-height: 2.5rem
 
 .home__info
 
-    margin: 1rem 0
     width: 100%
     padding: .5rem 0
     box-sizing: border-box
@@ -30,19 +22,83 @@
     color: $color2
     line-height: 1.5rem
 
-    //border: 1px solid red
-
 .home__nav
 
-    display: flex
+    display: grid
+    grid-template-columns: repeat(2, 5rem)
+    grid-gap: 1rem
+    align-items: center
     margin: auto
     width: 100%
     min-height: 12rem
 
-    //border: 1px solid red
+    &__item
+
+        width: 5rem
+        height: 5rem
+        background: $gradient__regular
+        border-radius: 100%
+    
+        &:hover
+
+            @include animation__float
+
+    &__link
+
+        position: relative
+        text-align: center
+        color: $color__secondary_dark
+        text-decoration: none
+
+        ion-icon
+
+            position: relative
+            float: right
+            left: 1rem
+            top: -.25rem
+            border-radius: 100%
+            padding: .25rem
+            background: $color__w
+            box-shadow: $shadow__button--strong
+
+        &-text
+
+            margin: 1rem
+            margin-top: 2rem
+            position: absolute
+            float: bottom
+            height: 5rem
+            text-align: center
+            color: $color__w
+            font-size: $font-size__sm
+            transition: .3s all ease
+
+            &:hover
+
+                font-size: $font-size__md
+                color: $color__secondary_dark
 
 .btn__sign-out
 
     color: $color__secondary_dark
     background: none
     border: none
+
+@media (min-width: 768px)
+
+    .home__nav
+
+        display: flex
+        flex-direction: row
+        width: 100%
+        justify-content: space-between
+
+        &__item
+
+            justify-content: space-between
+            width: 7rem
+            height: 7rem
+
+        &__link-text
+
+            font-size: $font-size__md
