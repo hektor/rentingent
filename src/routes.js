@@ -1,4 +1,4 @@
-// Pages
+// Pages (js)
 import HomeView from './pages/home';
 import AuthView from './pages/auth';
 import ZoekKotView from './pages/zoek-kot';
@@ -7,6 +7,7 @@ import MessagesView from './pages/messages';
 import MijnKotenView from './pages/mijn-koten';
 import KotToevoegenView from './pages/kot-toevoegen';
 import SwipeKotView from './pages/swipeview';
+import FavouritesView from './pages/favourites';
 import pageNotFoundView from './pages/404';
 
 export default [
@@ -18,5 +19,6 @@ export default [
   { path: '/mijn-koten', view: MijnKotenView },
   { path: '/kot-toevoegen', view: KotToevoegenView },
   { path: '/swipeview', view: SwipeKotView },
+  { path: '/favourites', view: FavouritesView },
   { path: '/404', view: pageNotFoundView }
 ];
