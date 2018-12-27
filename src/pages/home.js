@@ -1,6 +1,7 @@
 // Only import the compile function from handlebars instead of the entire library
 import { compile } from 'handlebars';
 import update from '../helpers/update';
+import User from './User';
 
 const { getInstance } = require('../firebase/firebase');
 const firebase = getInstance();
@@ -9,23 +10,28 @@ const firebase = getInstance();
 const homeTemplate = require('../templates/home.hbs');
 
 export default () => {
-  // Data to be passed to the template
-
-  const user = 'user';
-  // Return the compiled template to the router
-
-  // check user-type here and load home page accordingly
-
-  // check if user is activated - if not, load activation-home.handlebars
-
-  update(compile(homeTemplate)({ user }));
-  const logOutBtn = document.querySelector('.btn__sign-out');
-  logOutBtn.addEventListener('click', e => {
-    firebase
-      .auth()
-      .signOut()
-      .then(() => {
-        localStorage.clear();
+  const currentUser = new User();
+  currentUser
+    .getCurrentUserType()
+    .then(userType => {
+      // check user-type here and load home page accordingly
+      if (userType === 'student') {
+        update(compile(homeTemplate)({}));
+      } else if (userType === 'kotbaas') {
+        let kotbaas = true;
+        update(compile(homeTemplate)({ kotbaas }));
+      }
+    })
+    .then(() => {
+      const logOutBtn = document.querySelector('.btn__sign-out');
+      logOutBtn.addEventListener('click', e => {
+        firebase
+          .auth()
+          .signOut()
+          .then(() => {
+            localStorage.clear();
+          });
       });
-  });
+    });
+  // TODO: check if user is activated and load home page accordingly
 };

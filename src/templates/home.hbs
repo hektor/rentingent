@@ -2,43 +2,59 @@
   {{> header-info }}
   <div class="header__background_cirlce"></div>
   <div class="container__page home__container">
-    <h1 class="home__greeting">
-      Welcome,<br>
-      {{#if user}}{{user}}
-      {{else}}student
-      {{/if}}.
-      <ion-icon name="school" size="large"></ion-icon>
-    </h1>
-    <button class="btn btn__sign-out">
-      <ion-icon name="log-out" size="large"></ion-icon>
-    </button>
+    <div class="home__header">
+      <h1 class="home__header__greet">
+        Welcome,<br>
+        {{#if kotbaas}}
+        kotbaas<br>
+        <ion-icon name="person" size="large"></ion-icon>
+        {{else}}
+        student<br>
+        <ion-icon name="school" size="large"></ion-icon>
+        {{/if}}
+      </h1>
+      <button class="btn btn__sign-out">
+        <ion-icon name="log-out" size="large"></ion-icon>
+      </button>
+    </div>
     <p class="home__info">
       What would you <br>like to do?
     </p>
+
     <nav class="home__nav">
-      <a href="">
-        <ion-icon name="star" size="large"></ion-icon>
-        Favorieten
-      </a>
-      <a class="home__nav__btn" href="/mapbox" data-navigo>
-        <ion-icon name="pin" size="large"></ion-icon>
-        Kotenkaart
-      </a>
-      <a class="home__nav__btn " href="/messages" data-navigo="">
-        <ion-icon name="text" size="large"></ion-icon>
-        Berichten
-      </a>
-      <a class="home__nav__btn" href="/zoek-kot" data-navigo>
-        <ion-icon name="search" size="large"></ion-icon>
-        Koten
-      </a>
+      {{#if kotbaas}}
+      <div class="home__nav__item">
+        <a class="home__nav__link" href="/mijn-koten" data-navigo>
+          <ion-icon name="business" size="large"></ion-icon>
+          <h1 class="home__nav__link-text">Mijn koten</h1>
+        </a>
+      </div>
+      {{else}}
+      <div class="home__nav__item">
+        <a class="home__nav__link" href="/" data-navigo>
+          <ion-icon name="star" size="large"></ion-icon>
+          <h1 class="home__nav__link-text">Favorieten</h1>
+        </a>
+      </div>
+      {{/if}}
+      <div class="home__nav__item">
+        <a class="home__nav__link" href="/mapbox" data-navigo>
+          <ion-icon name="pin" size="large"></ion-icon>
+          <h1 class="home__nav__link-text">Kotenkaart</h1>
+        </a>
+      </div>
+      <div class="home__nav__item">
+        <a class="home__nav__link " href="/messages" data-navigo>
+          <ion-icon name="text" size="large"></ion-icon>
+          <h1 class="home__nav__link-text">Berichten</h1>
+        </a>
+      </div>
+      <div class="home__nav__item">
+        <a class="home__nav__link" href="/zoek-kot" data-navigo>
+          <ion-icon name="search" size="large"></ion-icon>
+          <h1 class="home__nav__link-text">Koten </h1>
+        </a>
+      </div>
     </nav>
-    <br>
-    <a class="home__nav__btn" href="/404" data-navigo>404</a>
-    <br>
-    <a class="home__nav__btn" href="/about" data-navigo>About</a>
-    <br>
-    <a class="home__nav__btn" href="/firebase" data-navigo>Firebase</a>
-    <br>
   </div>
 </div>
