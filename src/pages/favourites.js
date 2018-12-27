@@ -17,8 +17,17 @@ export default () => {
   let loading;
   update(compile(favouritesTemplate)({ loading }));
   let koten = new Koten();
-  koten.getAllFavourites().then(favourites => {
-    console.log(favourites);
-    update(compile(favouritesTemplate)({ favourites }));
+  koten.getAllFavourites().then(favs => {
+    update(compile(favouritesTemplate)({ favs }));
+    const removeBtns = document.querySelectorAll(
+      '.kot__btn__remove-from-favorites'
+    );
+    Array.from(removeBtns).forEach((removeBtn, i) => {
+      removeBtn.addEventListener('click', e => {
+        let fav = favs[i];
+        fav.removeFromFavourites();
+        removeBtn.parentElement.parentElement.style.display = 'none';
+      });
+    });
   });
 };
