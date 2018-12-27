@@ -55,9 +55,9 @@ The Web API Key and Project ID can be found here:
 
 - ~~Registreren en inloggen met email/password~~
 - **EXTRA:** Registreren en inloggen met Google account
-- Zoeken
+- ~~Zoeken~~
 
-  - Tinderspel spelen met de beschikbare studentenkoten
+  - ~~Tinderspel spelen met de beschikbare studentenkoten~~
     - Sorteer de koten van dicht naar ver (hogeschool/uni -> kot)
   - ~~Lijst tonen met alle studentenkoten~~
     - Sorteerbaar op afstand
@@ -69,13 +69,13 @@ The Web API Key and Project ID can be found here:
     - Afstand (van x - x)
   - Mogelijk om een detailpagina van een kot te bekijken
 
-- Berichten
+- !Berichten
   - Berichten sturen naar kotbazen
   - Een (web) notification krijgen bij een nieuw bericht
 - Favorieten
   - ~~Een kot toevoegen aan favorieten~~
   - Een kot verwijderen van favorieten
-  - Een lijst met favoriete koten bekijken
+  - ~~Een lijst met favoriete koten bekijken~~
 - Social Media
   - Een kot delen op social media
 
