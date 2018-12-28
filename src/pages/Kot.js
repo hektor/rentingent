@@ -49,10 +49,9 @@ export default class Kot {
   }
 
   shareOnSocial() {}
-  addToDatabase() {
+  addToDatabase(kot) {
     const ref = database.ref('kot/');
-    const kot = this.kot;
-    ref.push(this.kot);
+    ref.push(kot);
   }
 
   getTotalPrice() {

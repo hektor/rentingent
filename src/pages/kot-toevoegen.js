@@ -45,7 +45,7 @@ export default () => {
       if (value === '') {
         message = 'Vul alle velden in';
       } else {
-        new Kot(kot).addToDatabase();
+        new Kot(kot).addToDatabase(kot);
         message = 'Kot toegevoegd!';
       }
       return message;
