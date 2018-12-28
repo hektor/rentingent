@@ -2,6 +2,7 @@
 import { compile } from 'handlebars';
 import update from '../helpers/update';
 import User from './User';
+import { Koten } from './Kot';
 
 // Import the template to use
 const mijnKotenTemplate = require('../templates/mijn-koten.hbs');
@@ -14,7 +15,27 @@ export default () => {
       console.log('add router here');
     } else if (userType === 'kotbaas') {
       // only get koten for this kotbaas
-      update(compile(mijnKotenTemplate)({}));
+      currentUser.getCurrentUser().then(user => {
+        let koten = new Koten();
+        koten.getKotenByUser(user.uid).then(koten => {
+          renderDom(koten);
+        });
+      });
     }
   });
 };
+
+function renderDom(koten) {
+  update(compile(mijnKotenTemplate)({ koten }));
+  console.log(koten);
+  const removeBtns = document.querySelectorAll('.kot__btn__remove');
+  const optionsBtns = document.querySelectorAll('.kot__btn__options');
+  Array.from(removeBtns).forEach((removeBtn, i) => {
+    removeBtn.addEventListener('click', e => {
+      console.log(koten);
+      let kot = koten[i];
+      kot.removeFromDatabase();
+      removeBtn.parentElement.parentElement.style.display = 'none';
+    });
+  });
+}
