@@ -11,6 +11,7 @@ import Kot from './Kot';
 export default () => {
   // Data to be passed to the template
   const name = 'Rent@Gent';
+  //test
 
   // Return the compiled template to the router
   update(compile(kotToevoegenTemplate)({ name }));
