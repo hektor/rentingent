@@ -3,7 +3,6 @@ import handlebars, { compile } from 'handlebars';
 
 import './styles/main.sass';
 import routes from './routes';
-import User from './pages/User';
 
 // Partials
 const navHeader = require('./partials/header-nav.hbs');
