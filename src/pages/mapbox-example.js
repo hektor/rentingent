@@ -60,8 +60,6 @@ export default () => {
           });
       });
     }
-
-    const marker = new mapboxgl.Marker().setLngLat([3.725, 51.05]).addTo(map);
   } else {
     console.error('Mapbox will crash the page if no access token is given.');
   }
