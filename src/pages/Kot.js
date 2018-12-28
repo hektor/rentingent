@@ -49,9 +49,23 @@ export default class Kot {
   }
 
   shareOnSocial() {}
-  addToDatabase(kot) {
-    const ref = database.ref('kot/');
-    ref.push(kot);
+
+  addToDatabase(kot, kotbaas) {
+    if (kotbaas !== null) {
+      kot.kotbaas = kotbaas;
+      const ref = database.ref('kot/');
+      ref.push(kot);
+    }
+  }
+
+  removeFromDatabase() {
+    return new Promise((resolve, reject) => {
+      database
+        .ref(`kot/${this.key}`)
+        .remove()
+        .then(() => resolve(null))
+        .catch(error => reject(error));
+    });
   }
 
   getTotalPrice() {
@@ -74,6 +88,26 @@ class Koten {
           snapshot.forEach(kot => {
             koten.push(new Kot(kot.val(), kot.key));
             this.koten.push(kot.val());
+          });
+          resolve(koten);
+        })
+        .catch(error => {
+          reject(error);
+        });
+    });
+  }
+
+  getKotenByUser(uidUser) {
+    return new Promise((resolve, reject) => {
+      database
+        .ref('/kot')
+        .once('value')
+        .then(snapshot => {
+          let koten = [];
+          snapshot.forEach(kot => {
+            if (kot.val().kotbaas === uidUser) {
+              koten.push(new Kot(kot.val(), kot.key));
+            }
           });
           resolve(koten);
         })
