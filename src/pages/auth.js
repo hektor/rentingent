@@ -49,7 +49,9 @@ export default () => {
     firebase
       .auth()
       .signInWithEmailAndPassword(emailEl.value, passwordEl.value)
-      .then(response => {})
+      .then(response => {
+        console.log({ 'sign in': response.user });
+      })
       .catch(error => {
         formHelperEl.setAttribute('class', 'auth__form__helper_active');
         formHelperEl.textContent = error.message;
@@ -64,6 +66,7 @@ export default () => {
         .auth()
         .createUserWithEmailAndPassword(emailEl.value, passwordEl.value)
         .then(response => {
+          console.log({ 'sign up': user });
           addUserToDatabase(response.user);
         })
         // catch errors from auth promise
@@ -79,13 +82,14 @@ export default () => {
 
   // Sign In w/ Provider - Google
   googleAuthBtn.addEventListener('click', e => {
+    let provider = new firebase.auth.GoogleAuthProvider();
+    provider.addScope('https://www.googleapis.com/auth/plus.login');
     e.preventDefault();
-    console.log('Google authentication...');
-    let provider = new firebase.auth().GoogleAuthProvider();
     firebase
       .auth()
       .signInWithPopup(provider)
       .then(result => {
+        console.log(result);
         console.log('successful google account link');
       })
       .catch(error => {
