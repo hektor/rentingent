@@ -11,15 +11,10 @@ import { Kot } from './Kot';
 import User from './User';
 
 export default () => {
-  // Data to be passed to the template
-  const name = 'Rent@Gent';
-
-  // check if user is kotbaas
-  const currentUser = new User();
-  currentUser.getCurrentUserType().then(userType => {
-    if (userType === 'student') {
-      console.log('add router here');
-    } else if (userType === 'kotbaas') {
+  Promise.all([authCheck(), getUserType()]).then(userResults => {
+    const user = userResults[0];
+    const userType = userResults[1];
+    if (user && userType === 'kotbaas') {
       loadTemplate();
     }
   });
