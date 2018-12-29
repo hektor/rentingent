@@ -16,30 +16,6 @@
     z-index: 1
     position: relative
 
-.kot
-
-    display: flex
-    flex-direction: column
-    flex-wrap: wrap
-    padding: 1rem
-    background: $color__w
-    color: $color__secondary_dark
-    border: 1px solid green
-
-    &__header
-        
-        @include flex-row-center
-        justify-content: space-between
-        border: 1px solid red
-
-    &__name
-
-        border: 1px solid red
-
-    &__address
-
-        border: 1px solid red
-
 .zoek-kot__options
 
     z-index: 0
@@ -99,6 +75,39 @@
             width: 2rem
             color: #000
             @include animation__glow
+.kot
+
+    display: flex
+    flex-direction: column
+    flex-wrap: wrap
+    padding: 1rem
+    background: $color__w
+    color: $color__secondary_dark
+    border: 1px solid green
+    height: 20rem
+    margin: 2rem 0
+
+    &__header
+        
+        @include flex-column
+        //justify-content: space-between
+        border: 1px solid red
+        height: 10rem
+
+    &__name
+
+        border: 1px solid red
+
+    &__address
+
+        border: 1px solid red
+
+    &__btn__more-details
+
+        position: relative
+        top: 0
+        left: 0
+
 
 .kot__details
 
