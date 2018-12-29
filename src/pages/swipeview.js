@@ -1,6 +1,7 @@
 // Only import the compile function from handlebars instead of the entire library
 import { compile } from 'handlebars';
 import update from '../helpers/update';
+import { authCheck, getUserType } from '../helpers/auth-check';
 
 // Import Kot class
 import { Kot } from './Kot';
@@ -15,10 +16,15 @@ const { getInstance } = require('../firebase/firebase');
 const firebase = getInstance();
 const database = firebase.database();
 
-// Router
-import { router } from '../index';
-
 export default () => {
+  Promise.all([authCheck(), getUserType()]).then(userResults => {
+    const user = userResults[0];
+    const userType = userResults[1];
+    if (user && userType === 'student') {
+    } else {
+      console.log('only for students');
+    }
+  });
   let i = 0;
   function swipeView(index) {
     let koten = new Koten();

@@ -1,7 +1,7 @@
 // Only import the compile function from handlebars instead of the entire library
 import { compile } from 'handlebars';
 import update from '../helpers/update';
-import authCheck from '../helpers/auth-check';
+import { authCheck, getUserType } from '../helpers/auth-check';
 
 // Import the template to use
 const messagesTemplate = require('../templates/messages.hbs');
@@ -12,20 +12,24 @@ const firebase = getInstance();
 const database = firebase.database();
 
 export default () => {
-  authCheck().then(user => {
-    // get messages from db
-    const createdOn = new Date().getTime();
-    console.log(createdOn);
-    database
-      .ref(`/conversation/`)
-      .once('value')
-      .then(snapshot => {
-        snapshot.forEach(chat => {
-          console.log(chat.val());
+  Promise.all([authCheck(), getUserType()]).then(userResults => {
+    const user = userResults[0];
+    const userType = userResults[1];
+    if (user) {
+      let kotbaas = userType === 'kotbaas' ? true : false;
+      // get messages from db
+      const createdOn = new Date().getTime();
+      console.log(createdOn);
+      database
+        .ref(`/conversation/`)
+        .once('value')
+        .then(snapshot => {
+          snapshot.forEach(chat => {
+            console.log(chat.val());
+          });
         });
-      });
-
-    function sendMessage(message) {}
-    update(compile(messagesTemplate)({}));
+      update(compile(messagesTemplate)({ kotbaas }));
+    }
   });
+  function sendMessage(message) {}
 };

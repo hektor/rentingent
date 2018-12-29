@@ -1,6 +1,7 @@
 // Only import the compile function from handlebars instead of the entire library
 import { compile } from 'handlebars';
 import update from '../helpers/update';
+import { authCheck, getUserType } from '../helpers/auth-check';
 
 // Import the template to use
 const zoekKotTemplate = require('../templates/zoek-kot.hbs');
@@ -9,10 +10,16 @@ const zoekKotTemplate = require('../templates/zoek-kot.hbs');
 import { Koten } from './Kot';
 
 export default () => {
-  let loading;
-  let koten = new Koten();
-  update(compile(zoekKotTemplate)({ loading }));
-  koten
+  Promise.all([authCheck(), getUserType()]).then(userResults => {
+    const user = userResults[0];
+    const userType = userResults[1];
+    if (user && userType === 'student') {
+    } else {
+      console.log('only for students');
+    }
+  });
+
+  new Koten()
     .getAllKoten()
     .then(koten => {
       console.log(koten);
