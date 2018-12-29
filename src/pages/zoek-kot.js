@@ -14,61 +14,62 @@ export default () => {
     const user = userResults[0];
     const userType = userResults[1];
     if (user && userType === 'student') {
+      new Koten()
+        .getAllKoten()
+        .then(koten => {
+          renderDom(koten);
+        })
+        .then(() => {
+          const filterByEl = document.querySelector(
+            '.zoek-kot__filter__dropdown'
+          );
+          filterByEl.addEventListener('change', e => {
+            console.log(e.target.value);
+            const filterByValue =
+              filterByEl.options[filterByEl.selectedIndex].text;
+            switch (filterByValue) {
+              case 'By price (ascending)':
+                koten.sortByPrice(1).then(sortedKoten => {
+                  //update(compile(zoekKotTemplate)({ koten }));
+                  renderDom(sortedKoten);
+                });
+                break;
+              case 'By price (descending)':
+                koten.sortByPrice(-1).then(sortedKoten => {
+                  //update(compile(zoekKotTemplate)({ koten }));
+                  renderDom(sortedKoten);
+                });
+                break;
+              case 'By type':
+                koten.filterByType('Studio').then(sortedKoten => {
+                  //update(compile(zoekKotTemplate)({ koten }));
+                  renderDom(sortedKoten);
+                });
+                break;
+              case 'By surface (ascending)':
+                koten.sortBySurface(1).then(sortedKoten => {
+                  //update(compile(zoekKotTemplate)({ koten }));
+                  renderDom(sortedKoten);
+                });
+                break;
+              case 'By surface (descending)':
+                koten.sortBySurface(-1).then(sortedKoten => {
+                  renderDom(sortedKoten);
+                });
+                break;
+            }
+          });
+        });
+      // - Afstand (van x - x) @@@ pass in distance
     } else {
       console.log('only for students');
     }
   });
-
-  new Koten()
-    .getAllKoten()
-    .then(koten => {
-      console.log(koten);
-      renderDom(koten);
-    })
-    .then(() => {
-      const filterByEl = document.querySelector('.zoek-kot__filter__dropdown');
-      filterByEl.addEventListener('change', e => {
-        console.log(e.target.value);
-        const filterByValue = filterByEl.options[filterByEl.selectedIndex].text;
-        switch (filterByValue) {
-          case 'By price (ascending)':
-            koten.sortByPrice(1).then(sortedKoten => {
-              //update(compile(zoekKotTemplate)({ koten }));
-              renderDom(sortedKoten);
-            });
-            break;
-          case 'By price (descending)':
-            koten.sortByPrice(-1).then(sortedKoten => {
-              //update(compile(zoekKotTemplate)({ koten }));
-              renderDom(sortedKoten);
-            });
-            break;
-          case 'By type':
-            koten.filterByType('Studio').then(sortedKoten => {
-              //update(compile(zoekKotTemplate)({ koten }));
-              renderDom(sortedKoten);
-            });
-            break;
-          case 'By surface (ascending)':
-            koten.sortBySurface(1).then(sortedKoten => {
-              //update(compile(zoekKotTemplate)({ koten }));
-              renderDom(sortedKoten);
-            });
-            break;
-          case 'By surface (descending)':
-            koten.sortBySurface(-1).then(sortedKoten => {
-              renderDom(sortedKoten);
-            });
-            break;
-        }
-      });
-    });
-  // - Afstand (van x - x) @@@ pass in distance
 };
 
 function renderDom(koten) {
-  update(compile(zoekKotTemplate)({ koten }));
   console.log(koten);
+  update(compile(zoekKotTemplate)({ koten }));
   const addToLikeBtns = document.querySelectorAll(
     '.kot__btn__add-to-favorites'
   );
