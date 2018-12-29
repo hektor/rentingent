@@ -5,7 +5,8 @@ import './styles/main.sass';
 import routes from './routes';
 
 // Partials
-const navHeader = require('./partials/header-nav.hbs');
+const navHeaderStudent = require('./partials/header-nav-student.hbs');
+const navHeaderKotbaas = require('./partials/header-nav-kotbaas.hbs');
 const infoHeader = require('./partials/header-info.hbs');
 const footer = require('./partials/footer.hbs');
 
@@ -14,7 +15,8 @@ const { getInstance } = require('./firebase/firebase');
 const firebase = getInstance();
 
 // Register partials
-handlebars.registerPartial('header-nav', compile(navHeader)({}));
+handlebars.registerPartial('header-nav-student', compile(navHeaderStudent)({}));
+handlebars.registerPartial('header-nav-kotbaas', compile(navHeaderKotbaas)({}));
 handlebars.registerPartial('header-info', compile(infoHeader)({}));
 handlebars.registerPartial(
   'footer',
