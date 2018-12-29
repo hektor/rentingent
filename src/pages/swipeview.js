@@ -21,34 +21,36 @@ export default () => {
     const user = userResults[0];
     const userType = userResults[1];
     if (user && userType === 'student') {
+      let i = 0;
+      function swipeView(index) {
+        let koten = new Koten();
+        if (i >= koten.length) {
+          update(compile(swipeKotTemplate));
+        }
+        koten.getAllKoten().then(koten => {
+          i = index;
+          let kot = koten[i];
+          update(compile(swipeKotTemplate)({ kot }));
+          const kotLikeBtn = document.querySelector('.btn__swipe-kot__like');
+          const kotDislikeBtn = document.querySelector(
+            '.btn__swipe-kot__dislike'
+          );
+          kotLikeBtn.addEventListener('click', e => {
+            kot.addToFavourites();
+            i += 1;
+            swipeView(i);
+            console.log(i, { like: e });
+          });
+          kotDislikeBtn.addEventListener('click', e => {
+            i += 1;
+            swipeView(i);
+            console.log(i, { dislike: e });
+          });
+        });
+      }
+      swipeView(i);
     } else {
       console.log('only for students');
     }
   });
-  let i = 0;
-  function swipeView(index) {
-    let koten = new Koten();
-    if (i >= koten.length) {
-      update(compile(swipeKotTemplate));
-    }
-    koten.getAllKoten().then(koten => {
-      i = index;
-      let kot = koten[i];
-      update(compile(swipeKotTemplate)({ kot }));
-      const kotLikeBtn = document.querySelector('.btn__swipe-kot__like');
-      const kotDislikeBtn = document.querySelector('.btn__swipe-kot__dislike');
-      kotLikeBtn.addEventListener('click', e => {
-        kot.addToFavourites();
-        i += 1;
-        swipeView(i);
-        console.log(i, { like: e });
-      });
-      kotDislikeBtn.addEventListener('click', e => {
-        i += 1;
-        swipeView(i);
-        console.log(i, { dislike: e });
-      });
-    });
-  }
-  swipeView(i);
 };
