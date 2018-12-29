@@ -9,6 +9,7 @@ import { Koten } from './Kot';
 // Import the template to use
 const swipeKotTemplate = require('../templates/swipeview.hbs');
 const addToFavoritesBtn = document.querySelector('.kot__btn__add-to-favorites');
+
 // Firebase
 const { getInstance } = require('../firebase/firebase');
 const firebase = getInstance();
