@@ -2,6 +2,8 @@
 import { compile } from 'handlebars';
 import update from '../helpers/update';
 
+import Navigo from 'navigo';
+
 // Import the template to use
 const authTemplate = require('../templates/auth.hbs');
 
@@ -26,6 +28,9 @@ export default () => {
     '.auth__input__password-confirm'
   );
   const formHelperEl = document.querySelector('.auth__form__helper');
+
+  // Navigo router
+  const router = new Navigo(window.location.origin, true, '#');
 
   //===============| GOOGLE AUTH FUNCTIONALITY |============== //
   // SIGN TYPE SWITCHER
@@ -52,6 +57,9 @@ export default () => {
       .then(response => {
         console.log({ 'sign in': response.user });
       })
+      .then(() => {
+        router.navigate('/home');
+      })
       .catch(error => {
         formHelperEl.setAttribute('class', 'auth__form__helper_active');
         formHelperEl.textContent = error.message;
@@ -68,6 +76,9 @@ export default () => {
         .then(response => {
           console.log({ 'sign up': user });
           addUserToDatabase(response.user);
+        })
+        .then(() => {
+          router.navigate('/home');
         })
         // catch errors from auth promise
         .catch(error => {
