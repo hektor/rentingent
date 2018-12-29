@@ -11,8 +11,7 @@ const authCheck = () => {
       if (user) {
         resolve(user);
       } else {
-        router.navigate('/auth');
-        reject(console.error('could not get current user'));
+        reject(console.log('could not get current user'));
       }
     });
   });
