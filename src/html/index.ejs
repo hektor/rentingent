@@ -40,7 +40,10 @@
     <link rel="shortcut icon" href="favicon.ico" type="image/icon" />
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <!-- This gets rendered before dom loads -->
+      <div class="app__loading-screen"><div class="app__loader"></div></div>
+    </div>
     <script src="https://unpkg.com/ionicons@4.2.2/dist/ionicons.js"></script>
   </body>
 </html>
