@@ -57,6 +57,8 @@ export default () => {
       const value = kot[field];
       if (value === '') {
         message = 'Vul alle velden in';
+      } else if (isNumber(value)) {
+        return value.toString();
       } else {
         currentUser.getCurrentUser().then(user => {
           new Kot(kot).addToDatabase(kot, user.uid);
