@@ -3,6 +3,8 @@ import { compile } from 'handlebars';
 import update from '../helpers/update';
 import { authCheck, getUserType } from '../helpers/auth-check';
 
+import Navigo from 'navigo';
+
 // Firebase
 const { getInstance } = require('../firebase/firebase');
 const firebase = getInstance();
@@ -15,16 +17,15 @@ export default () => {
     .then(userResults => {
       const user = userResults[0];
       const userType = userResults[1];
+      let kotbaas = userType === 'kotbaas' ? true : false;
       if (user) {
-        if (userType === 'student') {
-          update(compile(homeTemplate)({}));
-        } else if (userType === 'kotbaas') {
-          let kotbaas = true;
-          update(compile(homeTemplate)({ kotbaas }));
-        }
+        update(compile(homeTemplate)({ kotbaas }));
+      } else {
+        console.log('no user logged in');
       }
     })
     .then(() => {
+      const router = new Navigo(window.location.origin, true, '#');
       const logOutBtn = document.querySelector('.btn__sign-out');
       logOutBtn.addEventListener('click', e => {
         firebase
@@ -32,6 +33,7 @@ export default () => {
           .signOut()
           .then(() => {
             localStorage.clear();
+            router.navigate('/auth');
           });
       });
     });
