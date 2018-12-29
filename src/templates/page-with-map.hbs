@@ -1,5 +1,9 @@
 <div class="container">
-  {{> header-nav }}
+  {{#if kotbaas}}
+  {{> header-nav-kotbaas}}
+  {{else}}
+  {{> header-nav-student}}
+  {{/if}}
   <div class="koten-kaart__container page__container">
     <div id="map"></div>
     <p>Go to <a href="/home" data-navigo>Home page</a></p>

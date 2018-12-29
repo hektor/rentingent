@@ -33,11 +33,23 @@
           <h1 class="home__nav__link-text">Mijn koten</h1>
         </a>
       </div>
+      <div class="home__nav__item">
+        <a class="home__nav__link" href="/kot-toevoegen" data-navigo>
+          <ion-icon name="add" size="large"></ion-icon>
+          <h1 class="home__nav__link-text">Kot toevoegen</h1>
+        </a>
+      </div>
       {{else}}
       <div class="home__nav__item">
-        <a class="home__nav__link" href="/" data-navigo>
+        <a class="home__nav__link" href="/favourites" data-navigo>
           <ion-icon name="star" size="large"></ion-icon>
           <h1 class="home__nav__link-text">Favorieten</h1>
+        </a>
+      </div>
+      <div class="home__nav__item">
+        <a class="home__nav__link" href="/zoek-kot" data-navigo>
+          <ion-icon name="search" size="large"></ion-icon>
+          <h1 class="home__nav__link-text">Koten </h1>
         </a>
       </div>
       {{/if}}
@@ -51,12 +63,6 @@
         <a class="home__nav__link " href="/messages" data-navigo>
           <ion-icon name="text" size="large"></ion-icon>
           <h1 class="home__nav__link-text">Berichten</h1>
-        </a>
-      </div>
-      <div class="home__nav__item">
-        <a class="home__nav__link" href="/zoek-kot" data-navigo>
-          <ion-icon name="search" size="large"></ion-icon>
-          <h1 class="home__nav__link-text">Koten </h1>
         </a>
       </div>
     </nav>
