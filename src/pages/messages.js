@@ -29,7 +29,26 @@ export default () => {
           });
         });
       update(compile(messagesTemplate)({ kotbaas }));
+      requestNotificationPermission();
+      spawnNotification('New message', 'hello world');
     }
   });
-  function sendMessage(message) {}
+
+  const requestNotificationPermission = () => {
+    if (window.Notification && Notification.permission !== 'granted') {
+      Notification.requestPermission(status => {
+        if (Notification.permission !== status) {
+          Notification.permission = status;
+        }
+      });
+    }
+  };
+
+  const spawnNotification = (title, message) => {
+    const options = {
+      body: message,
+      icon: '../../images/rent-in-gent.svg'
+    };
+    new Notification(title, options);
+  };
 };
