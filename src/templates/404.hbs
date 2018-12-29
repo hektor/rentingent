@@ -8,10 +8,11 @@
             <p class="title title__404__message_small">We could not find what you're looking for</p>
         </div>
         {{#if weather}}
-        <p>While you're here, we have the weather for Gent tomorrow:</p>
-        <div>
-            {{ weather }}
-        </div>
+        <p>While you're here,</p>
+        <h3>Weather for gent</h3>
+        <h1>Tomorrow</h1>
+        <h2>{{weather.temp}}°C</h2>
+        <p>{{weather.description}}</p>
         {{/if}}
     </div>
 </div>

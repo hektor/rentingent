@@ -15,8 +15,10 @@ export default () => {
       return response.json();
     })
     .then(data => {
-      const weather = data.list[5].weather[0].main;
-      console.log(weather);
+      const weather = {
+        temp: (data.list[5].main.temp - 273.15).toFixed(1),
+        description: data.list[5].weather[0].description
+      };
       // Return the compiled template to the router
       update(compile(pageNotFoundTemplate)({ weather }));
     })
