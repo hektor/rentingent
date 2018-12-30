@@ -9,19 +9,13 @@ const navHeaderStudent = require('./partials/header-nav-student.hbs');
 const navHeaderKotbaas = require('./partials/header-nav-kotbaas.hbs');
 const infoHeader = require('./partials/header-info.hbs');
 const footer = require('./partials/footer.hbs');
-
-// Firebase
-const { getInstance } = require('./firebase/firebase');
-const firebase = getInstance();
+const kot = require('./partials/kot.hbs');
 
 // Register partials
 handlebars.registerPartial('header-nav-student', compile(navHeaderStudent)({}));
 handlebars.registerPartial('header-nav-kotbaas', compile(navHeaderKotbaas)({}));
 handlebars.registerPartial('header-info', compile(infoHeader)({}));
-handlebars.registerPartial(
-  'footer',
-  compile(footer)({ text: 'Template made with love by GDM Ghent' })
-);
+handlebars.registerPartial('kot', compile(kot)({}));
 
 // Router logic to load the correct template when needed
 const router = new Navigo(window.location.origin, true, '#');
@@ -38,7 +32,3 @@ router.notFound(() => {
 });
 
 router.resolve();
-
-window.onload = () => {
-  router.navigate(window.location.hash.split('/')[1]);
-};
