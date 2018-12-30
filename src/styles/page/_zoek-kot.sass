@@ -18,31 +18,47 @@
 
 .zoek-kot__options
 
-    z-index: 0
-    margin: 0 -2rem
-    position: relative
+    z-index: 100
+    position: fixed
+    left: 0
     display: flex
     flex-direction: row
-    justify-content: space-between
-    padding: 1rem 3rem
+    justify-content: space-around
+    align-items: center
+    box-sizing: border-box
+    width: 100%
+    height: 3rem
     border-radius: 0 0 2rem 2rem
-    background: $gradient__regular
+    background: $gradient__regular 
+    color: $color__w
+
+    .zoek-kot__option
+
+        height: 100%
+        border: 1px solid red
+        justify-content: space-between
 
     .zoek-kot__search
 
-        position: absolute
-        top: .5rem
-        left: 3rem
+        position: relative
 
-        input[type='text']
+        .zoek-kot__search-toggle
 
+            z-index: -1
+            color: $color__w
+            @include animation__glow
+            
+        &-box
+
+            z-index: 101
+            position: absolute
+            left: 0
+            top: 0
             background: none
             border: none
-            z-index: 101
             width: 2rem
             height: 2rem
             padding: 0 2rem
-            color: transparent
             font-size: $font-size__md
             font-family: $font__title
             line-height: 1rem
@@ -60,21 +76,11 @@
 
                 width: 100%
                 height: 2rem
-                color: #000
-                border-bottom: .125rem solid $color2
+                color: $color__w
+                border-bottom: .125rem solid $color__w
                 padding: 0 2rem
                 box-sizing: border-box
 
-        .zoek-kot__search-toggle
-
-            z-index: -1
-            position: absolute
-            left: 0
-            top: 0
-            height: 2rem
-            width: 2rem
-            color: #000
-            @include animation__glow
 .kot
 
     display: flex
@@ -83,8 +89,7 @@
     padding: 1rem
     background: $color__w
     color: $color__secondary_dark
-    border: 1px solid green
-    height: 20rem
+    height: 30rem
     margin: 2rem 0
 
     &__header

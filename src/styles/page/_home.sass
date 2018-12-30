@@ -2,16 +2,6 @@
 
     @include flex-row
 
-    &__greet
-
-        margin-top: 5rem
-        width: 100%
-        box-sizing: border-box
-        font-family: $font__title
-        font-size: $font-size__lg + .62rem
-        color: $color__secondary_dark
-        line-height: 2.5rem
-
 .home__info
 
     width: 100%
@@ -21,6 +11,22 @@
     font-size: $font-size__md
     color: $color2
     line-height: 1.5rem
+
+.home__options
+
+    display: flex
+    flex-direction: column
+    margin: 5rem 0
+
+.btn__sign-out
+
+    background: $color__warning
+    color: $color__w
+
+.btn__settings
+
+    background: $color4
+    color: $color__w
 
 .home__nav
 
@@ -45,8 +51,11 @@
 
     &__link
 
+        display: flex
         position: relative
-        text-align: center
+        justify-content: center
+        align-items: center
+        height: 100%
         color: $color__secondary_dark
         text-decoration: none
 
@@ -54,8 +63,9 @@
 
             position: relative
             float: right
-            left: 1rem
-            top: -.25rem
+            left: 50%
+            top: -50%
+            transform: translate(-.5rem, .5rem)
             border-radius: 100%
             padding: .25rem
             background: $color__w
@@ -63,11 +73,9 @@
 
         &-text
 
-            margin: 1rem
-            margin-top: 2rem
             position: absolute
-            float: bottom
-            height: 5rem
+            top: 35%
+            line-height: 100%
             text-align: center
             color: $color__w
             font-size: $font-size__sm
@@ -77,12 +85,6 @@
 
                 font-size: $font-size__md
                 color: $color__secondary_dark
-
-.btn__sign-out
-
-    color: $color__secondary_dark
-    background: none
-    border: none
 
 @media (min-width: 768px)
 
@@ -98,6 +100,10 @@
             justify-content: space-between
             width: 7rem
             height: 7rem
+
+        &__link > ion-icon
+
+            padding: .5rem
 
         &__link-text
 

@@ -29,25 +29,7 @@ $width__auth__form: 16rem
         font-family: $font__title
         font-size: $font-size__lg
         width: 100%
-
-        &__indicator
-            position: relative
-            margin: 0 .25rem
-            width: 3rem
-            height: 3rem
-            background-image: $gradient__light
-            border-radius: 100%
-            text-align: center
-            @include animation__float
-            @include clickable
-
-            &:hover
-                background-image: $gradient__regular
-                transition: .3s
-                opacity: .8
-                animation: float 1s cubic-bezier(0.8, 0.000, 0.000, 0.1)
-                box-shadow: 0 5px 15px 0px rgba(0,0,0,0.3)
-
+        
         &__signtype
             position: relative
             left: -.1rem
@@ -156,15 +138,6 @@ $width__auth__form: 16rem
         position: relative
         margin: -15rem 0 0 14.5rem
 
-// <div class="auth__register">
-//     <div class="toggle auth__toggle">
-//         <input type="radio" name="sizeBy" value="weight" id="sizeWeight" />
-//         <label for="sizeWeight">Student</label>
-//         <input type="radio" name="sizeBy" value="dimensions" id="sizeDimensions" />
-//         <label for="sizeDimensions">Kotbaas</label>
-//     </div>
-// </div>
-
 .auth__register
 
     padding: 1rem
@@ -187,7 +160,8 @@ $width__auth__form: 16rem
     flex-direction: row
 
 
-.auth__switch
+.switch
+
   margin: 1rem 0
   position: relative
 
