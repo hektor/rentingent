@@ -11,7 +11,7 @@
 
 ## What you will need
 
-- [Node (version lower than 10.x.x)](https://nodejs.org/en/download/releases/)
+- Node (https://nodejs.org/en/download/)
 - Eslint extension for Visual Studio Code (https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 
 ## Getting started
