@@ -40,7 +40,15 @@ function renderDom(koten) {
   console.log(koten);
   const removeBtns = document.querySelectorAll('.kot__btn__remove');
   const optionsBtns = document.querySelectorAll('.kot__btn__options');
-  Array.from(removeBtns).forEach((removeBtn, i) => {
+  removeBtns.forEach((removeBtn, i) => {
+    removeBtn.addEventListener('click', e => {
+      console.log(koten);
+      let kot = koten[i];
+      kot.removeFromDatabase();
+      removeBtn.parentElement.parentElement.style.display = 'none';
+    });
+  });
+  optionsBtns.forEach((removeBtn, i) => {
     removeBtn.addEventListener('click', e => {
       console.log(koten);
       let kot = koten[i];
