@@ -13,7 +13,7 @@ module.exports = (env, argv) => {
     console.error(
       `Incorrect Node version ${
         process.versions.node
-      } detected, downgrade to a version lower than 10.x.x`
+      } detected, downgrade to a version lower than 11.x.x`
     );
     process.exit();
   }
