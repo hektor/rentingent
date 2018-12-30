@@ -2,5 +2,37 @@
 
     background: none
     border: none
+    padding: .5rem
+    margin: .25rem
+    width: 3rem
+    height: 3rem
     color: $color__secondary_dark
+    border-radius: 50%
+    @include animation__glow
+    @include clickable
+    transition: .3s ease
+    box-shadow: $shadow__button
+
+    &:hover
+
+        box-shadow: 0 5px 15px 0px rgba(0,0,0,0.3)
+
+.btn--indicator
     
+    position: relative
+    margin: 0 .25rem
+    width: 3rem
+    height: 3rem
+    background-image: $gradient__light
+    border-radius: 100%
+    text-align: center
+    color: $color__secondary_dark
+    @include animation__float
+    @include clickable
+
+    &:hover
+        background-image: $gradient__regular
+        transition: .3s
+        opacity: .8
+        animation: float 1s cubic-bezier(0.8, 0.000, 0.000, 0.1)
+        box-shadow: 0 5px 15px 0px rgba(0,0,0,0.3)

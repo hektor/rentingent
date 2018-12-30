@@ -34,11 +34,4 @@
   top: -20%
   left: -20%
   box-shadow: rgba(0, 0, 0, 0.3) -6px -7px 6px -6px
-  animation: rotate 2s infinite cubic-bezier(.5, .2, .2, .5)
-
-@keyframes rotate 
-  0% 
-    transform: rotateZ(0deg)
-  
-  100% 
-    transform: rotateZ(360deg)
+  @include animation__rotate
