@@ -1,5 +1,6 @@
 @import "typography"
 @import "colors"
+@import "layout"
 
 //	DROP SHADOW
 
@@ -37,6 +38,13 @@ $shadow__button--hover: 0 15px 18px 0px rgba(0,0,0,0.1)
 		opacity: 1
 		transform: scale(1)
 
+@keyframes rotate 
+	0% 
+		transform: rotateZ(0deg)
+	
+	100% 
+		transform: rotateZ(360deg)
+
 //	MIXINS
 @mixin clickable		
 	cursor: hand
@@ -47,6 +55,9 @@ $shadow__button--hover: 0 15px 18px 0px rgba(0,0,0,0.1)
 
 @mixin animation__glow
 	animation: glow 2s infinite cubic-bezier(0.5, 0.000, 0.000, 0.2)
+
+@mixin animation__rotate
+	animation: rotate 2s infinite cubic-bezier(.5, .2, .2, .5)
 
 
 //	flexbox mixins
