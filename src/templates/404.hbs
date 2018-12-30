@@ -5,18 +5,21 @@
     {{> header-nav-student}}
     {{/if}}
     <div class="container__page container__error-page">
-        <div class="error">
-            <h1 class="title title__404">404</h1>
-            <h2 class="title title__404__message">Sorry,</h2>
-            <br>
-            <p class="title title__404__message_small">We could not find what you're looking for</p>
+        <div class="404">
+            <h1 class="title">Page not found</h1>
+            <div class="error">
+                <h2 class="title title__404__message">Sorry,</h2>
+                <p class="title__404__message_small">We could not find what you're looking for</p>
+            </div>
         </div>
         {{#if weather}}
-        <p>While you're here,</p>
-        <h3>Weather for gent</h3>
-        <h1>Tomorrow</h1>
-        <h2>{{weather.temp}}°C</h2>
-        <p>{{weather.description}}</p>
+        <div class="weather">
+            <p>While you're here we have the weather for</p>
+            <h1>Tomorrow</h1>
+            <p>in Gent</p>
+            <p>{{weather.description}}</p>
+            <h1>{{weather.temp}}°C</h1>
+        </div>
         {{/if}}
     </div>
 </div>

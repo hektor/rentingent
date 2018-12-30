@@ -3,7 +3,7 @@
   <div class="header__background_cirlce"></div>
   <div class="container__page home__container">
     <div class="home__header">
-      <h1 class="home__header__greet">
+      <h1 class="title home__header__greet">
         Welcome,<br>
         {{#if kotbaas}}
         kotbaas<br>
@@ -13,12 +13,14 @@
         <ion-icon name="school" size="large"></ion-icon>
         {{/if}}
       </h1>
-      <button class="btn btn__settings">
-        <ion-icon name="settings" size="large"></ion-icon>
-      </button>
-      <button class="btn btn__sign-out">
-        <ion-icon name="log-out" size="large"></ion-icon>
-      </button>
+      <div class="home__options">
+        <button class="btn btn__settings">
+          <ion-icon name="settings" size="large"></ion-icon>
+        </button>
+        <button class="btn btn__sign-out">
+          <ion-icon name="log-out" size="large"></ion-icon>
+        </button>
+      </div>
     </div>
     <p class="home__info">
       Good to see you, <br>
@@ -36,7 +38,7 @@
       <div class="home__nav__item">
         <a class="home__nav__link" href="/kot-toevoegen" data-navigo>
           <ion-icon name="add" size="large"></ion-icon>
-          <h1 class="home__nav__link-text">Kot toevoegen</h1>
+          <h1 class="home__nav__link-text">Nieuw kot</h1>
         </a>
       </div>
       {{else}}

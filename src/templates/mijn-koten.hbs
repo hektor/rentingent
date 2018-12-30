@@ -1,22 +1,24 @@
-<div class="container">
+<div class="container_scroll">
     {{> header-nav-kotbaas }}
+    <div class="header__bg"></div>
     <div class="container__page mijn-koten__container">
-        <h1>Mijn koten</h1>
-        {{#each koten}}
-        <div class="kot">
-            <div class="kot__header">
-                <h1 class="kot__name">{{this.name}}</h1>
-                <h1 class="kot__address">{{this.address}}</h1>
+        <h1 class="title mijn-koten__title">Mijn koten</h1>
+        <div class="grid-wrapper">
+            {{#each koten}}
+            <div class="kot">
                 <button class="btn kot__btn__options">
                     <ion-icon name="options" size="large"></ion-icon>
                 </button>
                 <button class="btn kot__btn__remove">
                     <ion-icon name="remove-circle" size="large"></ion-icon>
                 </button>
-            </div>
-            <p class="kot__city">{{this.city}}</p>
-            <p class="kot__status">{{this.status}}</p>
-            <p class="kot__warranty"><span>Waarborg</span>€{{this.warranty}}</span>
+                <div class="kot__header">
+                    <h1 class="kot__name">{{this.name}}</h1>
+                    <h1 class="kot__address">{{this.address}}</h1>
+                </div>
+                <p class="kot__city">{{this.city}}</p>
+                <p class="kot__status">{{this.status}}</p>
+                <p class="kot__warranty"><span>Waarborg</span>€{{this.warranty}}</span></p>
                 <p class="kot__floor">{{this.floor}}</p>
                 <p class="kot__has-toilet">{{this.hasToilet}}</p>
                 <p class="kot__has-kitchen"> {{this.hasKitchen}}</p>
@@ -36,8 +38,9 @@
                         Kot details
                     </h1>
                 </div>
+            </div>
+            {{/each}}
         </div>
-        {{/each}}
         {{#unless koten}}
         <h1>Geen koten toegevoegd.</h1>
         <a href="/kot-toevoegen" data-navigo>Kot toevoegen?</a>

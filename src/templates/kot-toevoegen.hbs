@@ -1,40 +1,75 @@
-<div class="container">
+<div class="container_scroll">
     {{> header-nav-kotbaas }}
+    <div class="header__bg"></div>
     <div class="container__page kot-toevoegen__container">
-        <h1>Kot toevoegen</h1>
+        <h1 class="title kot-toevoegen__title">Kot toevoegen</h1>
+        <h1 class="kot__add__message">Vul de velden in om een kot toe te voegen</h1>
         <form class="kot__add">
-            <h1 class="kot__add__message">Vul de velden in om een kot toe te voegen</h1>
-            <label class="kot__add__label" for="">Titel</label>
-            <input type="text" class="kot__name__input" placeholder="Titel" required>
-            <div class="kot__add__address">
-                <label class="kot__add__label" for="">Straatnaam</label>
-                <input type="text" class="kot__street__input" placeholder="Straatnaam" required>
-                <label class="kot__add__label" for="">Huisnummer</label>
-                <input type="text" class="kot__street-number__input" placeholder="Huisnummer" required>
-                <label class="kot__add__label" for="">Stad</label>
-                <input type="text" class="kot__city__input" placeholder="Stad" required>
+            <div class="grid-wrapper">
+                <div class="kot__add__item">
+                    <label class="kot__add__label" for="">Titel</label>
+                    <input type="text" class="input kot__input__name" placeholder="Titel" required>
+                </div>
+                <div class="kot__add__item kot__add__street">
+                    <label class="kot__add__label" for="">Straatnaam</label>
+                    <input type="text" class="input kot__input__street" placeholder="Straatnaam" required>
+                </div>
+                <div class="kot__add__item kot__add__street-number">
+                    <label class="kot__add__label" for="">Huisnummer</label>
+                    <input type="text" class="input kot__input__street-number" placeholder="Huisnummer" required>
+                </div>
+                <div class="kot__add__item kot__add__city">
+                    <label class="kot__add__label" for="">Stad</label>
+                    <input type="text" class=" input kot__input__city" placeholder="Stad" required>
+                </div>
+                <div class="kot__add__item kot__add__total-price">
+                    <label class="kot__add__label" for="">Totale prijs</label>
+                    <input type="text" class="input kot__input__total-price" placeholder="Totale Prijs" required>
+                </div>
+                <div class="kot__add__item kot__add__type">
+                    <label class="kot__add__label" for="">Type</label>
+                    <input type="text" class="input kot__input__type" placeholder="Type" required>
+                </div>
+                <div class="kot__add__item kot__add__status">
+                    <label class="kot__add__label" for="">Status</label>
+                    <input type="text" class="input kot__input__status" placeholder="Status" required>
+                </div>
+                <div class="kot__add__item kot__add__warranty">
+                    <label class="kot__add__label" for="">Waarborg</label>
+                    <input type="text" class="input kot__input__warranty" placeholder="Waarborg" required>
+                </div>
+                <div class="kot__add__item kot__add__floor">
+                    <label class="kot__add__label" for="">Verdieping</label>
+                    <input type="text" class="input kot__input__floor" placeholder="Verdieping" required>
+                </div>
+                <div class="kot__add__item kot__add__toilet">
+                    <label class="kot__add__label" for="">Toilet?</label>
+                    <input type="text" class="input kot__input__toilet" placeholder="Toilet aanwezig?" required>
+                </div>
+                <div class="kot__add__item kot__add__kitchen">
+                    <label class="kot__add__label" for="">Keuken?</label>
+                    <input type="text" class="input kot__input__kitchen" placeholder="Keuken aanwezig?" required>
+                </div>
+                <div class="kot__add__item kot__add__shower">
+                    <label class="kot__add__label" for="">Douche?</label>
+                    <input type="text" class="input kot__input__shower" placeholder="Douche aanwezig?" required>
+                </div>
+                <div class="kot__add__item kot__add__furniture">
+                    <label class="kot__add__label" for="">Bemeubeld?</label>
+                    <input type="text" class="input kot__input__furniture" placeholder="Bemeubeld?" required>
+                </div>
+                <div class="kot__add__item kot__add__surface">
+                    <label class="kot__add__label" for="">Oppervlakte</label>
+                    <input type="text" class="input kot__input__surface" placeholder="Oppervlakte" required>
+                </div>
+                <div class="kot__add__image">
+                    <label class="kot__add__label">Afbeelding</label>
+                    <input type="file" class="kot__input__image">
+                </div>
+                <div class="kot__add__item kot__add__submit">
+                    <input type="submit" class="kot__add__submit" placeholder="Toevoegen">
+                </div>
             </div>
-            <label class="kot__add__label" for="">Totale prijs</label>
-            <input type="text" class="kot__total-price__input" placeholder="Totale Prijs" required>
-            <label class="kot__add__label" for="">Type</label>
-            <input type="text" class="kot__type__input" placeholder="Type" required>
-            <label class="kot__add__label" for="">Status</label>
-            <input type="text" class="kot__status__input" placeholder="Status" required>
-            <label class="kot__add__label" for="">Waarborg</label>
-            <input type="text" class="kot__warranty__input" placeholder="Waarborg" required>
-            <label class="kot__add__label" for="">Verdieping</label>
-            <input type="text" class="kot__floor__input" placeholder="Verdieping" required>
-            <label class="kot__add__label" for="">Toilet?</label>
-            <input type="text" class="kot__has-toilet__input" placeholder="Toilet aanwezig?" required>
-            <label class="kot__add__label" for="">Keuken?</label>
-            <input type="text" class="kot__has-kitchen__input" placeholder="Keuken aanwezig?" required>
-            <label class="kot__add__label" for="">Douche?</label>
-            <input type="text" class="kot__has-shower__input" placeholder="Douche aanwezig?" required>
-            <label class="kot__add__label" for="">Bemeubeld?</label>
-            <input type="text" class="kot__has-furniture__input" placeholder="Bemeubeld?" required>
-            <label class="kot__add__label" for="">Oppervlakte</label>
-            <input type="text" class="kot__surface__input" placeholder="Oppervlakte" required>
-            <input type="submit" class="kot__add__submit" placeholder="Toevoegen">
-        </form>
     </div>
+    </form>
 </div>

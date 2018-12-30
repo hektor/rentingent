@@ -2,41 +2,44 @@
     {{>header-nav-student}}
     <div class="header__bg"></div>
     <div class="container__page favourites__container">
-        {{#each favs}}
-        <div class="kot">
-            <div class="kot__header">
-                <h1 class="kot__name">{{this.name}}</h1>
-                <h1 class="kot__address">{{this.address}}</h1>
+        <h1 class="title favourites__title">Favorieten</h1>
+        <div class="grid-wrapper">
+            {{#each favs}}
+            <div class="kot">
                 <button class="btn kot__btn__remove-from-favorites">
                     <ion-icon name="remove-circle" size="large"></ion-icon>
                 </button>
-            </div>
-            <div>
-                <p class="kot__city">{{this.city}}</p>
-                <p class="kot__status">{{this.status}}</p>
-                <p class="kot__warranty"><span>Waarborg</span>€{{this.warranty}}</p>
-                <p class="kot__floor">{{this.floor}}</p>
-                <p class="kot__has-toilet">{{this.hasToilet}}</p>
-                <p class="kot__has-kitchen"> {{this.hasKitchen}}</p>
-                <p class="kot__has-shower"> {{this.hasShower}}</p>
-                <p class="kot__has-furniture"> {{this.hasFurniture}}</p>
-                <p class="kot__total-price"><span>Totale prijs</span>€{{this.totalPrice}}/m</p>
-                <p class="kot__type">{{this.type}}</p>
-                <p class="kot__surface">{{this.surface}} m²</p>
-                <button class="btn kot__btn__more-details">
-                    <ion-icon name="add-circle" size="large"></ion-icon>
-                </button>
-                <div class="kot__details">
-                    <button class="btn kot__btn__less-details">
-                        <ion-icon name="arrow-back" size="large"></ion-icon>
+                <div class="kot__header">
+                    <h1 class="kot__name">{{this.name}}</h1>
+                    <h1 class="kot__address">{{this.address}}</h1>
+                </div>
+                <div>
+                    <p class="kot__city">{{this.city}}</p>
+                    <p class="kot__status">{{this.status}}</p>
+                    <p class="kot__warranty"><span>Waarborg</span>€{{this.warranty}}</p>
+                    <p class="kot__floor">{{this.floor}}</p>
+                    <p class="kot__has-toilet">{{this.hasToilet}}</p>
+                    <p class="kot__has-kitchen"> {{this.hasKitchen}}</p>
+                    <p class="kot__has-shower"> {{this.hasShower}}</p>
+                    <p class="kot__has-furniture"> {{this.hasFurniture}}</p>
+                    <p class="kot__total-price"><span>Totale prijs</span>€{{this.totalPrice}}/m</p>
+                    <p class="kot__type">{{this.type}}</p>
+                    <p class="kot__surface">{{this.surface}} m²</p>
+                    <button class="btn kot__btn__more-details">
+                        <ion-icon name="add-circle" size="large"></ion-icon>
                     </button>
-                    <h1 class="kot__details__title">
-                        Kot details
-                    </h1>
+                    <div class="kot__details">
+                        <button class="btn kot__btn__less-details">
+                            <ion-icon name="arrow-back" size="large"></ion-icon>
+                        </button>
+                        <h1 class="kot__details__title">
+                            Kot details
+                        </h1>
+                    </div>
                 </div>
             </div>
+            {{/each}}
         </div>
-        {{/each}}
         {{#unless favs}}
         <h1>Je hebt nog geen favorieten toegevoegd.</h1>
         <a href="/zoek-kot" data-navigo>Kot zoeken?</a>
