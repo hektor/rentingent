@@ -21,7 +21,7 @@ export default class Kot {
     this.hasFurniture = kot['Opties'];
     // this.pictures = foto's van het kot;
     this.city = kot['Plaats'];
-    this.address = `${kot['Straat']} ${kot['Huisummer']}, ${kot['Plaats']}`;
+    this.address = `${kot['Straat']} ${kot['Huisnummer']}, ${kot['Plaats']}`;
     // this.coords = coords;
     // this.numOfRoomsInBuilding = numOfRoomsInBuilding;
     // this.description = propertyOwner;
@@ -50,12 +50,19 @@ export default class Kot {
 
   shareOnSocial() {}
 
-  addToDatabase(kot, kotbaas) {
-    if (kotbaas !== null) {
-      kot.kotbaas = kotbaas;
-      const ref = database.ref('kot/');
-      ref.push(kot);
-    }
+  addToDatabase(kot, image) {
+    const ref = database.ref('kot/');
+    ref
+      .push(kot)
+      .then(result => {
+        return result.getKey();
+      })
+      .then(key => {
+        if (image) {
+          const storageRef = firebase.storage().ref(`images/${key}`);
+          storageRef.put(image);
+        }
+      });
   }
 
   removeFromDatabase() {
