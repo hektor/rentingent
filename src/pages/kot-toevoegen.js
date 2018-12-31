@@ -24,11 +24,6 @@ export default () => {
   // load DOM - event listeners
   function loadTemplate(user) {
     update(compile(kotToevoegenTemplate)({ name }));
-
-    // let image = document.querySelector('.kot__input__image');
-    // image.addEventListener('change', e => {
-    // });
-
     document.querySelector('.kot__add').addEventListener('submit', e => {
       e.preventDefault();
       submitForm(user);
