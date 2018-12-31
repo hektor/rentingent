@@ -16,12 +16,13 @@ export default () => {
     const user = userResults[0];
     const userType = userResults[1];
     if (user) {
-      let kotbaas = userType === 'kotbaas' ? true : false;
+      const kotbaas = userType === 'kotbaas' ? true : false;
       update(compile(messagesTemplate)({ kotbaas }));
       const newMessageBtn = document.querySelector('.btn__new-message__toggle');
       const newMessageEl = document.querySelector('.message__form');
 
       newMessageBtn.addEventListener('click', e => {
+        e.preventDefault();
         newMessageEl.classList.toggle('hidden');
       });
       newMessageEl.addEventListener('submit', e => {
@@ -32,7 +33,7 @@ export default () => {
         }
       });
       requestNotificationPermission();
-      getMessages();
+      getMessages(user);
       //spawnNotification('New message', 'hello world');
     }
   });
@@ -56,34 +57,65 @@ export default () => {
   };
 };
 
+const displayMessage = (message, user) => {
+  const messageEl = document.createElement('div');
+  const messageSenderEl = document.createElement('h2');
+  const messageTimeEl = document.createElement('span');
+  const messageBodyEl = document.createElement('p');
+
+  messageEl.setAttribute('class', 'message');
+  messageSenderEl.setAttribute('class', 'message__sender');
+  messageTimeEl.setAttribute('class', 'message__time');
+  messageBodyEl.setAttribute('class', 'message__body');
+
+  if (message.sender === user.uid) {
+    messageSenderEl.setAttribute('class', 'message__my-message');
+  } else {
+    messageSenderEl.setAttribute('class', 'message__sender');
+  }
+
+  messageSenderEl.append(message.sender);
+  messageTimeEl.append(message.createdOn);
+  messageBodyEl.append(message.body);
+
+  messageEl.appendChild(messageSenderEl);
+  messageEl.appendChild(messageTimeEl);
+  messageEl.appendChild(messageBodyEl);
+
+  document.querySelector('.messages').appendChild(messageEl);
+};
+
 const sendMessage = (text, user) => {
   const message = {
-    message: text,
+    body: text,
     sender: user.uid,
     created_on: new Date().getTime()
   };
   return database
-    .ref(`/conversation/${user.uid}`)
+    .ref(`/conversation`)
     .push(message)
     .catch(error => {
       console.log(error);
     });
 };
 
-function getMessages() {
-  // Loads the last 12 messages and listen for new ones.
+const getMessages = user => {
   const callback = snap => {
-    var data = snap.val();
-    console.log(data);
-    //displayMessage(snap.key, data.message, data.sender, data.created_on);
+    const data = snap.val();
+    const message = {
+      body: data.body,
+      sender: data.sender,
+      createdOn: data.created_on
+    };
+    displayMessage(message, user);
   };
 
   database
     .ref('/conversation/')
-    .limitToLast(12)
+    .limitToLast(5)
     .on('child_added', callback);
   database
     .ref('/conversation/')
-    .limitToLast(12)
+    .limitToLast(5)
     .on('child_changed', callback);
-}
+};
