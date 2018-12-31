@@ -1,0 +1,43 @@
+<div class="container">
+    {{>header-info}}
+    <div class="header__background_cirlce"></div>
+    <div class="container__page settings-container">
+        <div class="settings__header">
+            <h1 class="title title__settings">Settings</h1>
+            <div class="settings__options">
+                <button class="btn btn__close" href="/home" data-navigo>
+                    <ion-icon name="close" size="large"></ion-icon>
+                </button>
+            </div>
+        </div>
+        <div class="settings__applied hidden">
+            <h3 class="settings__feedback settings__title">Your settings were updated.</h3>
+            <button class="btn btn__home" href="/home" data-navigo>
+                <ion-icon name="home" size="large"></ion-icon>
+            </button>
+        </div>
+        <form>
+            <div class="grid-wrapper--sm">
+                <div class="settings__profile">
+                    <h3 class="settings__title">Gebruikersnaam</h3>
+                    <input class="input setting__display-name__input" type="text">
+                </div>
+                <div class="settings__profile">
+                    <h3 class="settings__title">Voornaam</h3>
+                    <input class="input setting__first-name__input" type="text">
+                </div>
+                <div class="settings__profile">
+                    <h3 class="settings__title">Achternaam</h3>
+                    <input class="input setting__last-name__input" type="text">
+                </div>
+                <div class="settings__profile">
+                    <h3 class="settings__title">Telefoonnummer</h3>
+                    <input class="input setting__phone__input" type="text">
+                </div>
+            </div>
+            <button class="btn btn__accept" type="submit">
+                <ion-icon name="checkmark" size="large"></ion-icon>
+            </button>
+        </form>
+    </div>
+</div>
