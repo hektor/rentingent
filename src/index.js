@@ -8,14 +8,11 @@ import routes from './routes';
 const navHeaderStudent = require('./partials/header-nav-student.hbs');
 const navHeaderKotbaas = require('./partials/header-nav-kotbaas.hbs');
 const infoHeader = require('./partials/header-info.hbs');
-const footer = require('./partials/footer.hbs');
-const kot = require('./partials/kot.hbs');
 
 // Register partials
 handlebars.registerPartial('header-nav-student', compile(navHeaderStudent)({}));
 handlebars.registerPartial('header-nav-kotbaas', compile(navHeaderKotbaas)({}));
 handlebars.registerPartial('header-info', compile(infoHeader)({}));
-handlebars.registerPartial('kot', compile(kot)({}));
 
 // Router logic to load the correct template when needed
 const router = new Navigo(window.location.origin, true, '#');
