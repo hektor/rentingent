@@ -74,7 +74,6 @@ export default () => {
         .auth()
         .createUserWithEmailAndPassword(emailEl.value, passwordEl.value)
         .then(response => {
-          console.log({ 'sign up': user });
           addUserToDatabase(response.user);
         })
         .then(() => {
@@ -111,7 +110,10 @@ export default () => {
   function addUserToDatabase(user) {
     const userTypeEl = document.getElementById('switch__user-type');
     const userType = userTypeEl.checked ? 'kotbaas' : 'student';
+    const firstName = document.querySelector('.auth__input__first-name').value;
+    const lastName = document.querySelector('.auth__input__last-name').value;
 
+    user.updateProfile({ displayName: firstName });
     database.ref('user/' + user.uid).set({
       user_type: userType
     });
