@@ -17,9 +17,10 @@ export default () => {
     .then(userResults => {
       const user = userResults[0];
       const userType = userResults[1];
-      let kotbaas = userType === 'kotbaas' ? true : false;
+      const displayName = user.displayName;
+      const kotbaas = userType === 'kotbaas' ? true : false;
       if (user) {
-        update(compile(homeTemplate)({ kotbaas }));
+        update(compile(homeTemplate)({ kotbaas, displayName }));
       } else {
         console.log('no user logged in');
       }
