@@ -5,16 +5,15 @@
     <div class="home__header">
       <h1 class="title home__header__greet">
         Welcome,<br>
+        {{displayName}}
         {{#if kotbaas}}
-        kotbaas<br>
         <ion-icon name="person" size="large"></ion-icon>
         {{else}}
-        student<br>
         <ion-icon name="school" size="large"></ion-icon>
         {{/if}}
       </h1>
       <div class="home__options">
-        <button class="btn btn__settings">
+        <button class="btn btn__settings" href="/settings" data-navigo>
           <ion-icon name="settings" size="large"></ion-icon>
         </button>
         <button class="btn btn__sign-out">
