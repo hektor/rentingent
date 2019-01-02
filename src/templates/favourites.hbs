@@ -6,14 +6,11 @@
         <div class="grid-wrapper">
             {{#each favs}}
             <div class="kot">
-                <button class="btn kot__btn__remove-from-favorites">
-                    <ion-icon name="remove-circle" size="large"></ion-icon>
-                </button>
                 <div class="kot__header">
-                    <h1 class="kot__name">{{this.name}}</h1>
-                    <h1 class="kot__address">{{this.address}}</h1>
+                    <h2 class="kot__name">{{this.name}}</h2>
+                    <h3 class="kot__address">{{this.address}}</h3>
                 </div>
-                <div>
+                <div class="kot__body">
                     <p class="kot__city">{{this.city}}</p>
                     <p class="kot__status">{{this.status}}</p>
                     <p class="kot__warranty"><span>Waarborg</span>€{{this.warranty}}</p>
@@ -25,24 +22,20 @@
                     <p class="kot__total-price"><span>Totale prijs</span>€{{this.totalPrice}}/m</p>
                     <p class="kot__type">{{this.type}}</p>
                     <p class="kot__surface">{{this.surface}} m²</p>
-                    <button class="btn kot__btn__more-details">
+                    {{!-- <button class="btn kot__btn__more-details">
                         <ion-icon name="add-circle" size="large"></ion-icon>
+                    </button> --}}
+                    <button class="btn kot__btn__remove-from-favorites">
+                        <ion-icon name="close-circle" size="large"></ion-icon>
                     </button>
-                    <div class="kot__details">
-                        <button class="btn kot__btn__less-details">
-                            <ion-icon name="arrow-back" size="large"></ion-icon>
-                        </button>
-                        <h1 class="kot__details__title">
-                            Kot details
-                        </h1>
-                    </div>
                 </div>
             </div>
             {{/each}}
         </div>
         {{#unless favs}}
-        <h1>Je hebt nog geen favorieten toegevoegd.</h1>
+        <h2 class="title">Je hebt nog geen favorieten toegevoegd.</h2>
         <a href="/zoek-kot" data-navigo>Kot zoeken?</a>
         {{/unless}}
     </div>
+</div>
 </div>

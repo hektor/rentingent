@@ -26,10 +26,7 @@
         <ion-icon class="zoek-kot__search-toggle__icon icon" name="funnel" size="large"></ion-icon>
       </div>
     </div>
-    {{#if loading}}
-    <h1 class="loader">loading</h1>
-    {{/if}}
-    <div class="grid-wrapper">
+    <div class="grid-wrapper-center">
       {{#each koten}}
       <div class="kot">
         <div class="kot__header">
@@ -58,13 +55,6 @@
           <button class="btn kot__btn__add-to-favourites">
             <ion-icon name="star" size="large"></ion-icon>
           </button>
-          {{!-- <div class="fb-share-button" data-href="http://localhost:8080/#/zoek-kot" data-layout="button"
-            data-size="small" data-mobile-iframe="false">
-            <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A8080%2F%23%2Fzoek-kot&amp;src=sdkpreparse"
-              class="fb-xfbml-parse-ignore">
-              Delen
-            </a>
-          </div> --}}
         </div>
         <div class="kot__details">
           <button class="btn kot__btn__less-details">
