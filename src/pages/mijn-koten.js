@@ -2,7 +2,6 @@
 import { compile } from 'handlebars';
 import update from '../helpers/update';
 import { authCheck, getUserType } from '../helpers/auth-check';
-import User from './User';
 import { Koten } from './Kot';
 
 // Import the template to use
@@ -13,24 +12,12 @@ export default () => {
     const user = userResults[0];
     const userType = userResults[1];
     if (user && userType === 'kotbaas') {
+      let koten = new Koten();
+      koten.getKotenByUser(user.uid).then(koten => {
+        renderDom(koten);
+      });
     } else {
       console.log('only for kotbaas');
-    }
-  });
-
-  // check if user is kotbaas
-  const currentUser = new User();
-  currentUser.getCurrentUserType().then(userType => {
-    if (userType === 'student') {
-      console.log('add router here');
-    } else if (userType === 'kotbaas') {
-      // only get koten for this kotbaas
-      currentUser.getCurrentUser().then(user => {
-        let koten = new Koten();
-        koten.getKotenByUser(user.uid).then(koten => {
-          renderDom(koten);
-        });
-      });
     }
   });
 };
