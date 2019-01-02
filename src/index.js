@@ -23,6 +23,14 @@ routes.forEach(route => {
   });
 });
 
+router
+  .on({
+    'zoek-kot/:id': function() {
+      console.log('parametrized url');
+    }
+  })
+  .resolve();
+
 // This catches all non-existing routes and redirects back to the home
 router.notFound(() => {
   router.navigate('/404');
