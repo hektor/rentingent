@@ -13,9 +13,6 @@ const database = firebase.database();
 
 // Import classes
 import User from '../helpers/User';
-const userTest = new User();
-userTest.getAllUsers('kotbaas');
-
 export default () => {
   Promise.all([authCheck(), getUserType()]).then(userResults => {
     const user = userResults[0];
@@ -25,6 +22,17 @@ export default () => {
       update(compile(messagesTemplate)({ kotbaas }));
       const newMessageBtn = document.querySelector('.btn__new-message__toggle');
       const newMessageEl = document.querySelector('.message__form');
+
+      new User().getAllUsers('kotbaas').then(users => {
+        const chooseReceiverEl = document.querySelector(
+          '.messages__dropdown__choose-receiver'
+        );
+        users.forEach(user => {
+          const option = document.createElement('option');
+          option.text = user.first_name;
+          chooseReceiverEl.add(option);
+        });
+      });
 
       newMessageBtn.addEventListener('click', e => {
         e.preventDefault();
