@@ -4,12 +4,10 @@ import update from '../helpers/update';
 import { authCheck, getUserType } from '../helpers/auth-check';
 
 // Import Kot class
-import { Kot } from './Kot';
-import { Koten } from './Kot';
+import { Koten } from '../helpers/Kot';
 
 // Import the template to use
 const swipeKotTemplate = require('../templates/swipeview.hbs');
-const addToFavoritesBtn = document.querySelector('.kot__btn__add-to-favorites');
 
 // Firebase
 const { getInstance } = require('../firebase/firebase');
@@ -36,7 +34,7 @@ export default () => {
             '.btn__swipe-kot__dislike'
           );
           kotLikeBtn.addEventListener('click', e => {
-            kot.addToFavourites();
+            kot.addToFavourites(true);
             i += 1;
             swipeView(i);
             console.log(i, { like: e });

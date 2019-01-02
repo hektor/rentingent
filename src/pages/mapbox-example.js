@@ -11,7 +11,7 @@ import config from '../config';
 const mapTemplate = require('../templates/page-with-map.hbs');
 
 // Import Koten class
-import { Koten } from './Kot';
+import { Koten } from '../helpers/Kot';
 
 export default () => {
   Promise.all([authCheck(), getUserType()]).then(userResults => {

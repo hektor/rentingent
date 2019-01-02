@@ -1,5 +1,4 @@
 // Only import the compile function from handlebars instead of the entire library
-import Navigo from 'navigo';
 import { compile } from 'handlebars';
 import update from '../helpers/update';
 import { authCheck, getUserType } from '../helpers/auth-check';
@@ -9,7 +8,7 @@ const zoekKotTemplate = require('../templates/zoek-kot.hbs');
 const kotDetailsTemplate = require('../templates/kot-details.hbs');
 
 // Import Kot class
-import { Koten } from './Kot';
+import { Koten } from '../helpers/Kot';
 
 export default () => {
   Promise.all([authCheck(), getUserType()]).then(userResults => {
@@ -64,7 +63,7 @@ function renderDom(koten) {
       document
         .querySelector('.btn__details__add-to-favourites')
         .addEventListener('click', e => {
-          kot.addToFavourites();
+          kot.addToFavourites(true);
         });
       document
         .querySelector('.btn__details__close')
@@ -80,7 +79,7 @@ function renderDom(koten) {
   addToLikeBtns.forEach((addToLikeBtn, i) => {
     addToLikeBtn.addEventListener('click', e => {
       let kot = koten[i];
-      kot.addToFavourites();
+      kot.addToFavourites(true);
     });
   });
   const searchBoxEl = document.querySelector('.zoek-kot__search-box');

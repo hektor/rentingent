@@ -2,7 +2,7 @@
 import { compile } from 'handlebars';
 import update from '../helpers/update';
 import { authCheck, getUserType } from '../helpers/auth-check';
-import { Koten } from './Kot';
+import { Koten } from '../helpers/Kot';
 
 // Import the template to use
 const mijnKotenTemplate = require('../templates/mijn-koten.hbs');
