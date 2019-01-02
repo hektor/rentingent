@@ -58,7 +58,7 @@ export default () => {
         console.log({ 'sign in': response.user });
       })
       .then(() => {
-        router.navigate('/home');
+        router.navigate('/');
       })
       .catch(error => {
         formHelperEl.setAttribute('class', 'auth__form__helper_active');
@@ -77,7 +77,7 @@ export default () => {
           addUserToDatabase(response.user);
         })
         .then(() => {
-          router.navigate('/home');
+          router.navigate('/');
         })
         // catch errors from auth promise
         .catch(error => {

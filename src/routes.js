@@ -12,7 +12,7 @@ import settingsView from './pages/settings';
 import pageNotFoundView from './pages/404';
 
 export default [
-  { path: '/home', view: HomeView },
+  { path: '/', view: HomeView },
   { path: '/auth', view: AuthView },
   { path: '/zoek-kot', view: ZoekKotView },
   { path: '/mapbox', view: MapboxView },
