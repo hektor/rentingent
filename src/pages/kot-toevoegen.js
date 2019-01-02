@@ -11,7 +11,7 @@ const { getInstance } = require('../firebase/firebase');
 const firebase = getInstance();
 
 // Import Kot constructor function
-import { Kot } from './Kot';
+import { Kot } from '../helpers/Kot';
 
 export default () => {
   Promise.all([authCheck(), getUserType()]).then(userResults => {
