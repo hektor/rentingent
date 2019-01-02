@@ -77,6 +77,6 @@ The Web API Key and Project ID can be found here:
   - ~~Een kot verwijderen van favorieten~~
   - ~~Een lijst met favoriete koten bekijken~~
 - Social Media
-  - Een kot delen op social media
+  - ~~Een kot delen op social media~~
 
 ---
