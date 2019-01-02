@@ -1,6 +1,13 @@
+.messages__container
+
+    @include flex-column
+
 .new-message
 
-    position: relative
+    position: fixed
+    bottom: 0
+    left: 0rem
+    margin: 0 4rem 0 2rem
     width: 100%
     min-height: 3rem
     padding: .25rem
@@ -12,6 +19,7 @@
         margin: auto
         left: 0
         top: 0
+        background: $gradient__regular
 
     .btn__new-message__send
 
@@ -20,6 +28,7 @@
         right: 0
         top: 0
         transition: width 1s
+        background: $color__w
 
     &__input
 
@@ -32,18 +41,21 @@
         width: 100%
         height: 3rem
         box-shadow: $shadow__inner
+        background: $color__w
         border-radius: 1.5rem
         padding: 0 4rem
 
 .messages
 
+    overflow-y: visible
     box-sizing: border-box
+    display: flex
+    flex-direction: column
 
 .message
 
     box-shadow: $shadow__inner
     padding: 1rem
-    margin: .5rem 0
     border-radius: 1rem
 
 .message__sender
@@ -54,3 +66,8 @@
 
     &__time
     &__body
+
+//@media (max-width: 768px)
+
+
+    
