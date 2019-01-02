@@ -6,13 +6,8 @@ import { authCheck, getUserType } from '../helpers/auth-check';
 // Import the template to use
 const favouritesTemplate = require('../templates/favourites.hbs');
 
-// Firebase
-const { getInstance } = require('../firebase/firebase');
-const firebase = getInstance();
-const database = firebase.database();
-
 // Import Koten Class
-import { Koten } from './Kot';
+import { Koten } from '../helpers/Kot';
 
 export default () => {
   Promise.all([authCheck(), getUserType()]).then(userResults => {
@@ -28,7 +23,7 @@ export default () => {
         Array.from(removeBtns).forEach((removeBtn, i) => {
           removeBtn.addEventListener('click', e => {
             let fav = favs[i];
-            fav.removeFromFavourites();
+            fav.addToFavourites(false);
             removeBtn.parentElement.parentElement.style.display = 'none';
           });
         });
