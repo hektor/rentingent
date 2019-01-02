@@ -124,6 +124,22 @@ class Koten {
     });
   }
 
+  // getKotByKey(key) {
+  //   return new Promise((resolve, reject) => {
+  //     database
+  //       .ref('/kot')
+  //       .child('050PNS74ZW8XZ')
+  //       .once('value')
+  //       .then(snapshot => {
+  //         let kot = snapshot.val();
+  //         resolve(kot);
+  //       })
+  //       .catch(error => {
+  //         reject(error);
+  //       });
+  //   });
+  // }
+
   getAllFavourites() {
     return new Promise((resolve, reject) => {
       database
