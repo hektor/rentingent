@@ -1,10 +1,12 @@
 // Only import the compile function from handlebars instead of the entire library
+import Navigo from 'navigo';
 import { compile } from 'handlebars';
 import update from '../helpers/update';
 import { authCheck, getUserType } from '../helpers/auth-check';
 
-// Import the template to use
+// Import the template(s) to use
 const zoekKotTemplate = require('../templates/zoek-kot.hbs');
+const kotDetailsTemplate = require('../templates/kot-details.hbs');
 
 // Import Kot class
 import { Koten } from './Kot';
@@ -51,12 +53,26 @@ function renderDom(koten) {
       default:
         renderDom(koten);
     }
+    // - Afstand (van x - x) @@@ pass in distance
   });
-  // - Afstand (van x - x) @@@ pass in distance
+
+  const detailsBtns = document.querySelectorAll('.kot__btn__more-details');
+  detailsBtns.forEach((detailBtn, i) => {
+    detailBtn.addEventListener('click', e => {
+      let kot = koten[i];
+      update(compile(kotDetailsTemplate)({ kot }));
+      document
+        .querySelector('.btn__details__close')
+        .addEventListener('click', e => {
+          renderDom(koten);
+        });
+    });
+  });
   const addToLikeBtns = document.querySelectorAll(
     '.kot__btn__add-to-favourites'
   );
-  Array.from(addToLikeBtns).forEach((addToLikeBtn, i) => {
+
+  addToLikeBtns.forEach((addToLikeBtn, i) => {
     addToLikeBtn.addEventListener('click', e => {
       let kot = koten[i];
       kot.addToFavourites();
