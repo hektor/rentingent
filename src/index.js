@@ -38,7 +38,6 @@ router.notFound(() => {
 
 window.onload = () => {
   router.navigate(window.location.hash.split('/')[1]);
-  router.navigate('/home');
 };
 
 router.resolve();

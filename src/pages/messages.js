@@ -11,6 +11,13 @@ const { getInstance } = require('../firebase/firebase');
 const firebase = getInstance();
 const database = firebase.database();
 
+// Import classes
+import Kotbaas from '../helpers/Kotbaas';
+const userTest = new Kotbaas();
+userTest.getAllKotbazen().then(kotbazen => {
+  console.log(kotbazen);
+});
+
 export default () => {
   Promise.all([authCheck(), getUserType()]).then(userResults => {
     const user = userResults[0];
@@ -85,7 +92,7 @@ const displayMessage = (message, user) => {
   document.querySelector('.messages').appendChild(messageEl);
 };
 
-const sendMessage = (text, user) => {
+const sendMessage = (text, user, receiver) => {
   const message = {
     body: text,
     sender: user.uid,
