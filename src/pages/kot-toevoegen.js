@@ -46,7 +46,7 @@ function submitForm(user) {
   const kot = {
     Naam: getInput('name'),
     Straat: getInput('street'),
-    Huisnummer: getInput('street-number'),
+    Huisummer: getInput('street-number'),
     Plaats: getInput('city'),
     Status: getInput('status'),
     Waarborg: getInput('warranty'),
