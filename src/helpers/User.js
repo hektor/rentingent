@@ -14,11 +14,13 @@ export default class User {
         .once('value')
         .then(snapshot => {
           let users = [];
-          if (byUserType) {
-            users.map(user => {
-              console.log(user);
+          if (byUserType !== null) {
+            snapshot.forEach(user => {
+              if (user.val().user_type === byUserType) {
+                users.push(user.val());
+              }
             });
-          } else {
+          } else if (byUserType === null) {
             snapshot.forEach(user => {
               users.push(new User(user.val(), user.key));
               this.users.push(user.val());
