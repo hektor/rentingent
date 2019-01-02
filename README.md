@@ -43,7 +43,7 @@ The Web API Key and Project ID can be found here:
   - ~~Studentenkot toevoegen~~
     - **EXTRA:** Er kunnen enkel studentenkoten worden toegevoegd waarvan het adres zich in de Gentse kotzone bevindt.  
       Gebruik hiervoor de kotzones van [https://data.stad.gent/data/42 (Koppelingen naar een externe site.)Koppelingen naar een externe site.](https://data.stad.gent/data/42) en sla de zones op in de localstorage van de client
-  - Studentenkot -waarvan hij/zij de eigenaar is- bewerken
+  - ~~Studentenkot -waarvan hij/zij de eigenaar is- bewerken
   - ~~Studentenkot -waarvan hij/zij de eigenaar is- verwijderen~~
 - Berichten
   - Antwoorden op berichten van studenten (kotbazen kunnen niet zelf een conversatie beginnen)
@@ -80,14 +80,3 @@ The Web API Key and Project ID can be found here:
   - Een kot delen op social media
 
 ---
-
-## NOTES
-
-## TODO
-
-#zoek-kot
-
-- ~~!Fix event listeners after sort select~~
-- Kot: combine sortByPrice & sortBySurface & ... in sortBy method with property param
-- Classes: combine methods in one method with parameters where possible
-- !Add wireframes, visual designs, sitemap...
