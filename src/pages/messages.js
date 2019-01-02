@@ -22,17 +22,37 @@ export default () => {
       update(compile(messagesTemplate)({ kotbaas }));
       const newMessageBtn = document.querySelector('.btn__new-message__toggle');
       const newMessageEl = document.querySelector('.message__form');
+      const chooseReceiverEl = document.querySelector(
+        '.messages__dropdown__choose-receiver'
+      );
 
       new User().getAllUsers('kotbaas').then(users => {
-        const chooseReceiverEl = document.querySelector(
-          '.messages__dropdown__choose-receiver'
-        );
         users.forEach(user => {
           const option = document.createElement('option');
           option.text = user.first_name;
           chooseReceiverEl.add(option);
         });
       });
+
+      const sendMessage = (text, user) => {
+        const receiver =
+          chooseReceiverEl.options[chooseReceiverEl.selectedIndex].text;
+        const message = {
+          body: text,
+          sender: user.uid,
+          sender_name: user.displayName,
+          receiver: receiver,
+          created_on: new Date().getTime()
+        };
+        if (message.receiver !== null) {
+          return database
+            .ref(`/conversation`)
+            .push(message)
+            .catch(error => {
+              console.log(error);
+            });
+        }
+      };
 
       newMessageBtn.addEventListener('click', e => {
         e.preventDefault();
@@ -96,21 +116,6 @@ const displayMessage = (message, user) => {
   messageEl.appendChild(messageBodyEl);
 
   document.querySelector('.messages').appendChild(messageEl);
-};
-
-const sendMessage = (text, user, receiver) => {
-  const message = {
-    body: text,
-    sender: user.uid,
-    sender_name: user.displayName,
-    created_on: new Date().getTime()
-  };
-  return database
-    .ref(`/conversation`)
-    .push(message)
-    .catch(error => {
-      console.log(error);
-    });
 };
 
 const getMessages = user => {
