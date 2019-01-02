@@ -29,7 +29,7 @@ export default () => {
           removeBtn.addEventListener('click', e => {
             let fav = favs[i];
             fav.removeFromFavourites();
-            removeBtn.parentElement.parentElement.style.display = 'none';
+            removeBtn.parentElement.style.display = 'none';
           });
         });
       });
