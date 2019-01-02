@@ -13,54 +13,10 @@ export default () => {
   Promise.all([authCheck(), getUserType()]).then(userResults => {
     const user = userResults[0];
     const userType = userResults[1];
+    new Koten().getAllKoten().then(koten => {
+      renderDom(koten);
+    });
     if (user && userType === 'student') {
-      new Koten()
-        .getAllKoten()
-        .then(koten => {
-          renderDom(koten);
-        })
-        .then(() => {
-          const filterByEl = document.querySelector(
-            '.zoek-kot__filter__dropdown'
-          );
-          filterByEl.addEventListener('change', e => {
-            console.log(e.target.value);
-            const filterByValue =
-              filterByEl.options[filterByEl.selectedIndex].text;
-            switch (filterByValue) {
-              case 'By price (ascending)':
-                koten.sortByPrice(1).then(sortedKoten => {
-                  //update(compile(zoekKotTemplate)({ koten }));
-                  renderDom(sortedKoten);
-                });
-                break;
-              case 'By price (descending)':
-                koten.sortByPrice(-1).then(sortedKoten => {
-                  //update(compile(zoekKotTemplate)({ koten }));
-                  renderDom(sortedKoten);
-                });
-                break;
-              case 'By type':
-                koten.filterByType('Studio').then(sortedKoten => {
-                  //update(compile(zoekKotTemplate)({ koten }));
-                  renderDom(sortedKoten);
-                });
-                break;
-              case 'By surface (ascending)':
-                koten.sortBySurface(1).then(sortedKoten => {
-                  //update(compile(zoekKotTemplate)({ koten }));
-                  renderDom(sortedKoten);
-                });
-                break;
-              case 'By surface (descending)':
-                koten.sortBySurface(-1).then(sortedKoten => {
-                  renderDom(sortedKoten);
-                });
-                break;
-            }
-          });
-        });
-      // - Afstand (van x - x) @@@ pass in distance
     } else {
       console.log('only for students');
     }
@@ -68,10 +24,37 @@ export default () => {
 };
 
 function renderDom(koten) {
-  console.log(koten);
   update(compile(zoekKotTemplate)({ koten }));
+  const filterByEl = document.querySelector('.zoek-kot__filter__dropdown');
+  filterByEl.addEventListener('change', e => {
+    console.log(e.target.value);
+    const filterByValue = filterByEl.options[filterByEl.selectedIndex].text;
+    switch (filterByValue) {
+      case 'By price (ascending)':
+        renderDom(sortByPrice(koten, 1));
+        break;
+      case 'By price (descending)':
+        renderDom(sortByPrice(koten, -1));
+        break;
+      case 'By type (room - studio)':
+        renderDom(filterByType(koten, 1));
+        break;
+      case 'By type (studio - room)':
+        renderDom(filterByType(koten, -1));
+        break;
+      case 'By surface (ascending)':
+        renderDom(sortBySurface(koten, 1));
+        break;
+      case 'By surface (descending)':
+        renderDom(sortBySurface(koten, -1));
+        break;
+      default:
+        renderDom(koten);
+    }
+  });
+  // - Afstand (van x - x) @@@ pass in distance
   const addToLikeBtns = document.querySelectorAll(
-    '.kot__btn__add-to-favorites'
+    '.kot__btn__add-to-favourites'
   );
   Array.from(addToLikeBtns).forEach((addToLikeBtn, i) => {
     addToLikeBtn.addEventListener('click', e => {
@@ -93,4 +76,24 @@ function renderDom(koten) {
       }
     });
   });
+}
+
+function sortByPrice(koten, order) {
+  return koten.sort((a, b) =>
+    a.totalPrice > b.totalPrice
+      ? order
+      : b.totalPrice > a.totalPrice
+      ? -order
+      : 0
+  );
+}
+
+function filterByType(koten, order) {
+  return koten.sort((a, b) => (a.type > b.type ? order : -order));
+}
+
+function sortBySurface(koten, order) {
+  return koten.sort((a, b) =>
+    a.surface > b.surface ? order : b.surface > a.surface ? -order : 0
+  );
 }

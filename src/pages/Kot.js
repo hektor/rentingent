@@ -21,7 +21,7 @@ export default class Kot {
     this.hasFurniture = kot['Opties'];
     // this.pictures = foto's van het kot;
     this.city = kot['Plaats'];
-    this.address = `${kot['Straat']} ${kot['Huisnummer']}, ${kot['Plaats']}`;
+    this.address = `${kot['Straat']} ${kot['Huisummer']}, ${kot['Plaats']}`;
     // this.coords = coords;
     // this.numOfRoomsInBuilding = numOfRoomsInBuilding;
     // this.description = propertyOwner;
@@ -144,18 +144,6 @@ class Koten {
     });
   }
 
-  sortByPrice(order) {
-    return this.getAllKoten().then(koten => {
-      return koten.sort((a, b) =>
-        a.totalPrice > b.totalPrice
-          ? order
-          : b.totalPrice > a.totalPrice
-          ? -order
-          : 0
-      );
-    });
-  }
-
   getAllAddreses() {
     return this.getAllKoten().then(koten => {
       let addresses = [];
@@ -163,20 +151,6 @@ class Koten {
         addresses.push(kot.address);
       });
       return addresses;
-    });
-  }
-
-  sortBySurface(order) {
-    return this.getAllKoten().then(koten => {
-      return koten.sort((a, b) =>
-        a.surface > b.surface ? order : b.surface > a.surface ? -order : 0
-      );
-    });
-  }
-
-  filterByType(byType) {
-    return this.getAllKoten().then(koten => {
-      return koten.filter(({ type }) => type.includes(byType));
     });
   }
 }
