@@ -12,11 +12,9 @@ const firebase = getInstance();
 const database = firebase.database();
 
 // Import classes
-import Kotbaas from '../helpers/Kotbaas';
-const userTest = new Kotbaas();
-userTest.getAllKotbazen().then(kotbazen => {
-  console.log(kotbazen);
-});
+import User from '../helpers/User';
+const userTest = new User();
+userTest.getAllUsers('kotbaas');
 
 export default () => {
   Promise.all([authCheck(), getUserType()]).then(userResults => {
