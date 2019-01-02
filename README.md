@@ -87,7 +87,7 @@ The Web API Key and Project ID can be found here:
 
 #zoek-kot
 
-- !Fix event listeners after sort select
+- ~~!Fix event listeners after sort select~~
 - Kot: combine sortByPrice & sortBySurface & ... in sortBy method with property param
 - Classes: combine methods in one method with parameters where possible
 - !Add wireframes, visual designs, sitemap...
