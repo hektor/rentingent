@@ -2,6 +2,7 @@
 import { compile } from 'handlebars';
 import update from '../helpers/update';
 
+// Navigo
 import Navigo from 'navigo';
 
 // Import the template to use
@@ -12,7 +13,6 @@ const { getInstance } = require('../firebase/firebase');
 const firebase = getInstance();
 const database = firebase.database();
 
-// Router
 export default () => {
   update(compile(authTemplate)({}));
   // Update DOM and get DOM elements
@@ -32,8 +32,7 @@ export default () => {
   // Navigo router
   const router = new Navigo(window.location.origin, true, '#');
 
-  //===============| GOOGLE AUTH FUNCTIONALITY |============== //
-  // SIGN TYPE SWITCHER
+  // Sign type toggle
   signTypeBtn.addEventListener('click', e => {
     if (signTypeEl.textContent === 'up') {
       signTypeEl.textContent = 'in';
@@ -48,6 +47,7 @@ export default () => {
     }
   });
 
+  //===============| GOOGLE AUTH FUNCTIONALITY |============== //
   //Sign In
   signInBtn.addEventListener('click', e => {
     e.preventDefault();
