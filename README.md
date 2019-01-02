@@ -67,7 +67,7 @@ The Web API Key and Project ID can be found here:
     - ~~Huurprijs (van x - x)~~
     - ~~Oppervlakte~~
     - Afstand (van x - x)
-  - Mogelijk om een detailpagina van een kot te bekijken
+  - ~~Mogelijk om een detailpagina van een kot te bekijken~~
 
 - !Berichten
   - Berichten sturen naar kotbazen

@@ -1,0 +1,46 @@
+<div class="container  container_dark">
+    <header class="header header__navigation">
+        <div class="header__item-group">
+            <a class="btn__corner header__item header__item__corner btn__details__close">
+                <ion-icon name="arrow-back" size="large"></ion-icon>
+            </a>
+        </div>
+    </header>
+    <div class="container__page kot-details__container">
+        {{#if kot}}
+        <div class="kot-details">
+            <div class="kot-details__header">
+                <h2 class="kot__name">{{kot.name}}</h2>
+                <h3 class="kot__address">{{kot.address}}</h3>
+            </div>
+            <div class="kot-details__body">
+                <p class="kot__status">{{kot.status}}</p>
+                <p class="kot__city">{{kot.city}}</p>
+                <p class="kot__type">{{kot.type}}</p>
+                <h3 class="kot__total-price">€{{kot.totalPrice}}/m</h3>
+            </div>
+            <div class="kot-details__details">
+                <p class="kot__warranty"><span>Waarborg</span>€{{kot.warranty}}</span></p>
+                <p class="kot__floor">{{kot.floor}}</p>
+                <p class="kot__has-toilet">{{kot.hasToilet}}</p>
+                <p class="kot__has-kitchen"> {{kot.hasKitchen}}</p>
+                <p class="kot__has-shower"> {{kot.hasShower}}</p>
+                <p class="kot__has-furniture"> {{kot.hasFurniture}}</p>
+                <p class="kot__surface">{{kot.surface}} m²</p>
+            </div>
+            <div class="kot__btn-group">
+                <button class="btn kot__btn__add-to-favourites">
+                    <ion-icon name="star" size="large"></ion-icon>
+                </button>
+                {{!-- <div class="fb-share-button" data-href="http://localhost:8080/#/zoek-kot" data-layout="button"
+                    data-size="small" data-mobile-iframe="false">
+                    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A8080%2F%23%2Fzoek-kot&amp;src=sdkpreparse"
+                        class="fb-xfbml-parse-ignore">
+                        Delen
+                    </a>
+                </div> --}}
+            </div>
+        </div>
+        {{/if}}
+    </div>
+</div>

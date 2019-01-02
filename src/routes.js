@@ -2,6 +2,7 @@
 import HomeView from './pages/home';
 import AuthView from './pages/auth';
 import ZoekKotView from './pages/zoek-kot';
+import DetailView from './pages/kot-details';
 import MapboxView from './pages/mapbox-example';
 import MessagesView from './pages/messages';
 import MijnKotenView from './pages/mijn-koten';

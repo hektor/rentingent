@@ -25,8 +25,12 @@ routes.forEach(route => {
 
 router
   .on({
-    'zoek-kot/:id': function() {
-      console.log('parametrized url');
+    'zoek-kot/:id': (params, query) => {
+      // If we have http://localhost/zoek-kot/42/save?answer=42 as a url then
+      // params.id = 42
+      // params.action = save
+      // query = answer=42
+      console.log(params.id);
     }
   })
   .resolve();
