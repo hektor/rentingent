@@ -23,20 +23,21 @@
     left: 0
     display: flex
     flex-direction: row
-    justify-content: space-around
+    justify-content: space-between
+    padding: 0 2rem
     align-items: center
     box-sizing: border-box
     width: 100%
     height: 3rem
     border-radius: 0 0 2rem 2rem
-    background: $gradient__regular 
-    color: $color__w
+    background: $color__w
+    box-shadow: $shadow__inner
+    color: $color__secondary_dark
 
     .zoek-kot__option
 
         height: 100%
-        border: 1px solid red
-        justify-content: space-between
+        min-width: 10rem
 
     .zoek-kot__search
 
@@ -45,7 +46,7 @@
         .zoek-kot__search-toggle
 
             z-index: -1
-            color: $color__w
+            color: $color__secondary_dark
             @include animation__glow
             
         &-box
@@ -76,10 +77,19 @@
 
                 width: 100%
                 height: 2rem
-                color: $color__w
-                border-bottom: .125rem solid $color__w
+                color: $color__secondary_dark
+                border-bottom: .125rem solid $color__secondary_dark
                 padding: 0 2rem
                 box-sizing: border-box
+
+.btn__toggle-search-interface
+
+    width: 10rem
+    background: rgba($color__secondary_dark, .8)
+    border-radius: 1.5rem
+    color: $color__w
+
+
 
 .kot
 
@@ -89,30 +99,51 @@
     padding: 1rem
     background: $color__w
     color: $color__secondary_dark
+    box-shadow: $shadow__inner
     height: 30rem
     margin: 2rem 0
+    width: 100%
+    max-width: 20rem
+    margin-top: 2rem
+    border-radius: 1rem
 
     &__header
         
         @include flex-column
-        //justify-content: space-between
-        border: 1px solid red
-        height: 10rem
-
+        padding: 1rem
+        margin: -1rem
+        position: relative
+        box-sizing: border-box
+        border-radius: 1rem 1rem 0 0
+        height: 7rem
+        margin-bottom: 1rem
+        background: $gradient__regular
+        color: $color__w
+    
     &__name
 
-        border: 1px solid red
+        margin-bottom: .5rem
 
     &__address
+    
+    &__total-price
 
-        border: 1px solid red
+        margin: 1rem 0
+
+
+    &__btn-group
+
+        position: relative
+        bottom: -16.5rem
+
+    &__btn__add-to-favourites
+
+        background: $gradient__light
+        color: $color__w
 
     &__btn__more-details
 
-        position: relative
-        top: 0
-        left: 0
-
+        background: $color__w
 
 .kot__details
 
@@ -125,4 +156,3 @@
     height: 100%
     border: none
     background: $gradient__dark
-    

@@ -1,7 +1,10 @@
-<div class="container_dark">
+<div class="container">
     {{>header-nav-student}}
-    <div class="container__page swipe-kot__container">
-        <a class="search__toggle-search-interface" href="/zoek-kot" data-navigo>Alle Koten</a>
+    <div class="container__page zoek-kot__container">
+        <div class="zoek-kot__options">
+            <div class="zoek-kot__option"></div>
+            <button class="btn btn__toggle-search-interface" href="/zoek-kot" data-navigo>
+        </div>
         {{#if kot}}
         <div class="kot">
             <div class="kot__header">
@@ -20,9 +23,7 @@
                 <p class="kot__total-price"><span>Totale prijs</span>€{{kot.totalPrice}}/m</p>
                 <p class="kot__type">{{kot.type}}</p>
                 <p class="kot__surface">{{kot.surface}} m²</p>
-                <button class="btn kot__btn__more-details">
-                    <ion-icon name="add-circle" size="large"></ion-icon>
-                </button>
+
             </div>
             <div class="kot__details">
                 <button class="btn kot__btn__less-details">
