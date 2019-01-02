@@ -62,6 +62,11 @@ function renderDom(koten) {
       let kot = koten[i];
       update(compile(kotDetailsTemplate)({ kot }));
       document
+        .querySelector('.btn__details__add-to-favourites')
+        .addEventListener('click', e => {
+          kot.addToFavourites();
+        });
+      document
         .querySelector('.btn__details__close')
         .addEventListener('click', e => {
           renderDom(koten);
