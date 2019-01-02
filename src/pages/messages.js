@@ -59,7 +59,7 @@ export default () => {
 
 const displayMessage = (message, user) => {
   const messageEl = document.createElement('div');
-  const messageSenderEl = document.createElement('h2');
+  const messageSenderEl = document.createElement('h3');
   const messageTimeEl = document.createElement('span');
   const messageBodyEl = document.createElement('p');
 
@@ -74,7 +74,7 @@ const displayMessage = (message, user) => {
     messageSenderEl.setAttribute('class', 'message__sender');
   }
 
-  messageSenderEl.append(message.sender);
+  messageSenderEl.append(message.senderName);
   messageTimeEl.append(message.createdOn);
   messageBodyEl.append(message.body);
 
@@ -89,6 +89,7 @@ const sendMessage = (text, user) => {
   const message = {
     body: text,
     sender: user.uid,
+    sender_name: user.displayName,
     created_on: new Date().getTime()
   };
   return database
@@ -105,6 +106,7 @@ const getMessages = user => {
     const message = {
       body: data.body,
       sender: data.sender,
+      senderName: data.sender_name,
       createdOn: data.created_on
     };
     displayMessage(message, user);
