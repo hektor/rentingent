@@ -11,7 +11,7 @@ const { getInstance } = require('../firebase/firebase');
 const firebase = getInstance();
 const database = firebase.database();
 
-// Import Kot Class
+// Import Koten Class
 import { Koten } from './Kot';
 
 export default () => {
@@ -29,7 +29,7 @@ export default () => {
           removeBtn.addEventListener('click', e => {
             let fav = favs[i];
             fav.removeFromFavourites();
-            removeBtn.parentElement.style.display = 'none';
+            removeBtn.parentElement.parentElement.style.display = 'none';
           });
         });
       });
