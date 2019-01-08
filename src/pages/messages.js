@@ -37,16 +37,14 @@ export default () => {
       const sendMessage = (text, user) => {
         const receiver =
           chooseReceiverEl.options[chooseReceiverEl.selectedIndex].text;
-        console.log(receiver);
         const message = {
           body: text,
           sender: user.uid,
           sender_name: user.displayName,
-          receiver_name: receiver,
-          //receiver: receiver.uid,
+          receiver: receiver,
           created_on: new Date().getTime()
         };
-        if (message.receiver_name !== null) {
+        if (message.receiver !== null) {
           return database
             .ref(`/conversation`)
             .push(message)
@@ -127,12 +125,8 @@ const getMessages = user => {
       body: data.body,
       sender: data.sender,
       senderName: data.sender_name,
-      createdOn: data.created_on,
-      receiverName: data.receiver_name,
-      receiver: data.receiver
+      createdOn: data.created_on
     };
-    // if(message.receiver)
-    console.log(message);
     displayMessage(message, user);
   };
 
