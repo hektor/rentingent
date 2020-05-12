@@ -1,7 +1,12 @@
 <script>
+  import { Link } from 'svelte-routing'
 </script>
 
 <header> 
-  <a href="/">
-  </a>
+  <Link to="/">
+    Home
+  </Link>
+  <Link to="/auth">
+    Auth
+  </Link>
 </header>

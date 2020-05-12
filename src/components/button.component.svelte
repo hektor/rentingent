@@ -1,8 +1,10 @@
 <script>
   export let title;
+  export let type;
+  export let name;
 </script>
 
-<button>{title}</button>
+<button name={name} type={type}>{title}</button>
 
 <style>
   button {

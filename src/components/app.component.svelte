@@ -1,10 +1,10 @@
 <script>
-  import { Router, Link, Route } from "svelte-routing";
+  import { Router, Route } from "svelte-routing";
+  import Auth from '../pages/auth.page.svelte'
   import Home from '../pages/home.page.svelte'
 </script>
 
 <Router>
-  <div>
-    <Route path="/" component={Home} />
-  </div>
+  <Route path="/" component={Home} />
+  <Route path="/auth" component={Auth} />
 </Router>
