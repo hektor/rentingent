@@ -1,25 +1,23 @@
-const firebaseInstance = require('firebase');
+import firebase from 'firebase/app'
+import 'firebase/firebase-firestore'
+import 'firebase/firebase-auth'
+import 'firebase/firebase-functions'
+import 'firebase/firebase-storage'
 
-// Initialize Firebase
 const config = {
   apiKey: 'AIzaSyBUQyEJkCLbtVhy4sg6PtaQ4qP0mTbHlD0',
   authDomain: 'mobdev1-project-hektormisplon.firebaseapp.com',
   databaseURL: 'https://mobdev1-project-hektormisplon.firebaseio.com',
   projectId: 'mobdev1-project-hektormisplon',
   storageBucket: 'mobdev1-project-hektormisplon.appspot.com',
-  messagingSenderId: '29752707741'
-};
+  messagingSenderId: '29752707741',
+}
 
-let instance = null;
+firebase.initializeApp(config)
 
-const initFirebase = () => {
-  instance = firebaseInstance.initializeApp(config);
-};
+const Auth = firebase.auth()
+const Store = firebase.firestore()
+const Functions = firebase.app().functions()
+const Database = firebase.storage()
 
-const getInstance = () => {
-  if (!instance) {
-    initFirebase();
-  }
-  return instance;
-};
-export { initFirebase, getInstance };
+export { Auth, Store, Functions, Database }

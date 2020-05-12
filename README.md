@@ -1,82 +1,93 @@
-# 1819-mobdev1-code-template
-
-## Included
-
-- Handlebars (https://handlebarsjs.com/)
-- Navigo (https://github.com/krasimir/navigo)
-- Mapbox GL (https://www.mapbox.com/mapbox-gl-js/api/)
-- Firebase (https://firebase.google.com/docs/web/setup)
-- SASS (and SCSS)
-- ESLint with AirBnB Style Guide (https://github.com/airbnb/javascript)
-
-## What you will need
-
-- Node (https://nodejs.org/en/download/)
-- Eslint extension for Visual Studio Code (https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
-
-## Getting started
-
-1. Install all the modules by executing
-
-   > npm i
-
-2. Add your firebase config to the `src/database/firebase.js` file
-
-The Web API Key and Project ID can be found here:
-
-> https://console.firebase.google.com/project/{your-project}/settings/general/
-
-3. Run the app on a webserver instance
-
-   > npm run start
-
-4. To run create a new build
-   > npm run build
-
-## Requirements
-
-#### Als kotbaas
-
-- ~~Registreren en inloggen met email/password~~
-- **EXTRA:** Registreren en inloggen met Google account
-- Beheer studentenkot
-  - ~~Studentenkot toevoegen~~
-    - **EXTRA:** Er kunnen enkel studentenkoten worden toegevoegd waarvan het adres zich in de Gentse kotzone bevindt.  
-      Gebruik hiervoor de kotzones van [https://data.stad.gent/data/42 (Koppelingen naar een externe site.)Koppelingen naar een externe site.](https://data.stad.gent/data/42) en sla de zones op in de localstorage van de client
-  - ~~Studentenkot -waarvan hij/zij de eigenaar is- bewerken
-  - ~~Studentenkot -waarvan hij/zij de eigenaar is- verwijderen~~
-- Berichten
-  - Antwoorden op berichten van studenten (kotbazen kunnen niet zelf een conversatie beginnen)
-    - Een (web) notification krijgen bij een nieuw bericht
-- Social Media
-  - Een kot delen op social media
-
-#### Als student
-
-- ~~Registreren en inloggen met email/password~~
-- **EXTRA:** Registreren en inloggen met Google account
-- ~~Zoeken~~
-
-  - ~~Tinderspel spelen met de beschikbare studentenkoten~~
-    - Sorteer de koten van dicht naar ver (hogeschool/uni -> kot)
-  - ~~Lijst tonen met alle studentenkoten~~
-    - Sorteerbaar op afstand
-  - ~~Kaart te tonen met alle studentenkoten~~
-  - Filteren
-    - ~~Type~~
-    - ~~Huurprijs (van x - x)~~
-    - ~~Oppervlakte~~
-    - Afstand (van x - x)
-  - ~~Mogelijk om een detailpagina van een kot te bekijken~~
-
-- !Berichten
-  - Berichten sturen naar kotbazen
-  - Een (web) notification krijgen bij een nieuw bericht
-- ~~Favorieten~~
-  - ~~Een kot toevoegen aan favorieten~~
-  - ~~Een kot verwijderen van favorieten~~
-  - ~~Een lijst met favoriete koten bekijken~~
-- Social Media
-  - ~~Een kot delen op social media~~
+*Looking for a shareable component template? Go here --> [sveltejs/component-template](https://github.com/sveltejs/component-template)*
 
 ---
+
+# svelte app
+
+This is a project template for [Svelte](https://svelte.dev) apps. It lives at https://github.com/sveltejs/template.
+
+To create a new project based on this template using [degit](https://github.com/Rich-Harris/degit):
+
+```bash
+npx degit sveltejs/template svelte-app
+cd svelte-app
+```
+
+*Note that you will need to have [Node.js](https://nodejs.org) installed.*
+
+
+## Get started
+
+Install the dependencies...
+
+```bash
+cd svelte-app
+npm install
+```
+
+...then start [Rollup](https://rollupjs.org):
+
+```bash
+npm run dev
+```
+
+Navigate to [localhost:5000](http://localhost:5000). You should see your app running. Edit a component file in `src`, save it, and reload the page to see your changes.
+
+By default, the server will only respond to requests from localhost. To allow connections from other computers, edit the `sirv` commands in package.json to include the option `--host 0.0.0.0`.
+
+
+## Building and running in production mode
+
+To create an optimised version of the app:
+
+```bash
+npm run build
+```
+
+You can run the newly built app with `npm run start`. This uses [sirv](https://github.com/lukeed/sirv), which is included in your package.json's `dependencies` so that the app will work when you deploy to platforms like [Heroku](https://heroku.com).
+
+
+## Single-page app mode
+
+By default, sirv will only respond to requests that match files in `public`. This is to maximise compatibility with static fileservers, allowing you to deploy your app anywhere.
+
+If you're building a single-page app (SPA) with multiple routes, sirv needs to be able to respond to requests for *any* path. You can make it so by editing the `"start"` command in package.json:
+
+```js
+"start": "sirv public --single"
+```
+
+
+## Deploying to the web
+
+### With [now](https://zeit.co/now)
+
+Install `now` if you haven't already:
+
+```bash
+npm install -g now
+```
+
+Then, from within your project folder:
+
+```bash
+cd public
+now deploy --name my-project
+```
+
+As an alternative, use the [Now desktop client](https://zeit.co/download) and simply drag the unzipped project folder to the taskbar icon.
+
+### With [surge](https://surge.sh/)
+
+Install `surge` if you haven't already:
+
+```bash
+npm install -g surge
+```
+
+Then, from within your project folder:
+
+```bash
+npm run build
+surge public my-project.surge.sh
+```

@@ -1,0 +1,12 @@
+{
+  "version": 3,
+  "file": "bundle.css",
+  "sources": [
+    "../../button.component.svelte"
+  ],
+  "sourcesContent": [
+    "<script>\n  export let title;\n</script>\n\n<button>{title}</button>\n\n<style>\n  button {\n    background: none;\n    border: none;\n    padding: .5rem;\n    margin: .25rem;\n  }\n</style>\n"
+  ],
+  "names": [],
+  "mappings": "AAOE,MAAM,cAAC,CAAC,AACN,UAAU,CAAE,IAAI,CAChB,MAAM,CAAE,IAAI,CACZ,OAAO,CAAE,KAAK,CACd,MAAM,CAAE,MAAM,AAChB,CAAC"
+}

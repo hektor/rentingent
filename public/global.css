@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:700');
+@import url('https://fonts.googleapis.com/css?family=Poppins:700');
+
+body {
+  display: flex;
+  height: 100vh;
+  font-family: var(--font-body);
+}
+
+:root {
+  /* colors */
+  --color-1: rgba(5, 102, 141, 1);
+  --color-2: rgba(250, 114, 104, 1);
+  --color-3: rgba(0, 168, 150, 1);
+  --color-4: rgba(2, 195, 154, 1);
+  --color-5: rgba(240, 243, 189, 1);
+
+  /* gradients */
+  --gradient-light: linear-gradient(
+    45deg,
+    var(--color-4) 0%,
+    var(--color-5) 85%,
+    #fff 100%
+  );
+
+  /* typography */
+  --font-heading: 'Poppins';
+  --font-body: 'Open Sans';
+  --font-size-xl: 2.62rem;
+  --font-size-lg: 1.62rem;
+  --font-size-md: 1rem;
+  --font-size-sm: 0.62rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+}
