@@ -1,0 +1,9 @@
+{
+  "name": "RentInGent",
+  "short_name": "RentInGent",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#fff",
+  "description": "",
+  "icons": []
+}
