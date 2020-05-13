@@ -1,22 +1,41 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:700');
-@import url('https://fonts.googleapis.com/css?family=Poppins:700');
-
-html {
-  box-sizing: border-box;
-}
+@import url('https://rsms.me/inter/inter.css');
 
 *,
 *::before,
 *::after {
-  box-sizing: inherit;
+  box-sizing: border-box;
 }
 
 body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  font-family: var(--font-body);
   margin: 0;
+}
+
+html {
+  font-family: var(--font-body);
+  text-size-adjust: auto;
+}
+
+@supports (font-variation-settings: normal) {
+  html {
+    font-family: var(--font-body-var);
+  }
+}
+
+.app-loading {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  background: #f00;
 }
 
 :root {
@@ -36,7 +55,8 @@ body {
 
   /* typography */
   --font-heading: 'Poppins';
-  --font-body: 'Open Sans';
+  --font-body: 'Inter';
+  --font-body-var: 'Inter var';
   --font-size-xl: 2.62rem;
   --font-size-lg: 1.62rem;
   --font-size-md: 1rem;
