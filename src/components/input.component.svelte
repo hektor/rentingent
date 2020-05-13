@@ -15,4 +15,17 @@
     display: flex;
     flex-direction: column;
   }
+
+  .input > label {
+    padding: 0.5rem 0;
+  }
+
+  .input > input {
+    padding: 1rem;
+    border-radius: 0.25rem;
+    border: 1px solid #ccc;
+    font-size: 1.25rem;
+    font-family: inherit;
+    margin-bottom: 0.5rem;
+  }
 </style>
