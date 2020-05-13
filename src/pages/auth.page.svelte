@@ -31,7 +31,7 @@
         <button class="auth-provider auth-provider_facebook"><img src="assets/icons/facebook.svg" alt="facebook-logo"></button>
       </div>
       <div class="auth-form_header">
-        Sign <span >{authType}</span>
+        <h1>Sign <span >{authType}</span></h1>
       </div>
       {#if authType === 'in'}
         <SignIn />
@@ -57,19 +57,18 @@
   flex-direction: column;
   background: #fff;
   min-height: 62vh;
-  padding: 6vw;
+  padding: 0 6vw;
 }
 
 .auth-provider_group {
   position: relative;
   height: 5rem;
-  margin-top: -6vw;
-  top: -2.5rem;
+  top: -1.5rem;
 }
 
 .auth-provider {
-  height: 5rem;
-  width: 5rem;
+  height: 3rem;
+  width: 3rem;
   border-radius: 50%;
   background: #fff;
   border: none;
