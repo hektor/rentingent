@@ -6,10 +6,12 @@
 
   let authType = 'in';
 
-  const handleSubmit = e => {
-    console.log(authType)
-  }
+  const handleSignin = () => console.log("sign in")
+  const handleSignup = () => console.log("sign up")
+  const handleSubmit = e => authType === 'in' ? handleSignin() : handleSignup()
 
+  /* 
+  * Toggle sign up or sign in */
   const toggleAuthType = () => {authType = (authType === 'in' ? 'up' : 'in')}
 </script>
 
@@ -17,10 +19,10 @@
   <div class="auth-type-toggle">
     {#if authType === 'in'}
       <span>New to RentInGent?</span>
-      <Button on:click={toggleAuthType} title="Create account" />
+      <Button outline color="#fff" on:click={toggleAuthType} title="Create account" />
     {:else}
       <span>Already have an account?</span>
-      <Button on:click={toggleAuthType} title="Sign in" />
+      <Button outline color="#fff" on:click={toggleAuthType} title="Sign in" />
     {/if}
   </div>
   <div class="page">
@@ -31,7 +33,7 @@
         <button class="auth-provider auth-provider_facebook"><img src="assets/icons/facebook.svg" alt="facebook-logo"></button>
       </div>
       <div class="auth-form_header">
-        <h1>Sign <span >{authType}</span></h1>
+        <h1>Sign <span class="auth-type-toggle-indicator" on:click={toggleAuthType}>{authType}</span></h1>
       </div>
       {#if authType === 'in'}
         <SignIn />
@@ -95,6 +97,19 @@
 
 .auth-type-toggle > * {
   flex: 1;
+}
+
+h1 { color: var(--color-1);}
+
+.auth-type-toggle-indicator {
+  position: absolute;
+  text-align: center;
+  margin-left: .25rem;
+  background: var(--gradient-light);
+  width: 3rem;
+  height: 3rem;
+  border-radius: 1.5rem;
+  cursor: pointer;
 }
 
 </style>
