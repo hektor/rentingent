@@ -5,8 +5,8 @@
 
   const hideSplashScreen = () => {
     setTimeout(() => {
-      document.querySelector(".app-loading").classList.remove("app-loading")
-    }, 150);
+      const loader = document.querySelector(".app-loading").remove()
+    }, 300);
   }
 
   hideSplashScreen();
