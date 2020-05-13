@@ -1,11 +1,9 @@
 <script>
-
   import Layout from '../components/layout.component.svelte'
   import SignIn from '../components/signin.component.svelte'
   import SignUp from '../components/signup.component.svelte'
+  import Button from '../components/button.component.svelte'
 
-  let email = '';
-  let password = '';
   let authType = 'in';
 
   const handleSubmit = e => {
@@ -13,44 +11,91 @@
   }
 
   const toggleAuthType = () => {authType = (authType === 'in' ? 'up' : 'in')}
-
 </script>
 
 <Layout>
-  <h1>Welcome to RentInGent</h1>
-  <form class="auth-form" on:submit|preventDefault={handleSubmit}>
-    <div class="auth-form_helper" />
-    <div class="auth-form_provider-group">
-      <button class="auth-provider auth-provider_google"><img src="assets/icons/google.svg" alt="google-logo"></button>
-      <button class="auth-provider auth-provider_facebook"><img src="assets/icons/facebook.svg" alt="facebook-logo"></button>
-    </div>
-    <div class="auth-form_header">
-      Sign <span >{authType}</span>
-    </div>
+  <div class="auth-type-toggle">
     {#if authType === 'in'}
-      <SignIn />
-      <div class="auth-type-toggle">
-        <span>New to RentInGent?</span>
-        <button on:click={toggleAuthType}>Create account</button>
-      </div>
+      <span>New to RentInGent?</span>
+      <Button on:click={toggleAuthType} title="Create account" />
     {:else}
-      <SignUp />
-      <div class="auth-type-toggle">
-        <span>Already have an account?</span>
-        <button on:click={toggleAuthType}>Sign in</button>
-      </div>
+      <span>Already have an account?</span>
+      <Button on:click={toggleAuthType} title="Sign in" />
     {/if}
-  </form>
+  </div>
+  <div class="page">
+    <form class="auth-form" on:submit|preventDefault={handleSubmit}>
+      <div class="auth-form_helper" />
+      <div class="auth-provider_group">
+        <button class="auth-provider auth-provider_google"><img src="assets/icons/google.svg" alt="google-logo"></button>
+        <button class="auth-provider auth-provider_facebook"><img src="assets/icons/facebook.svg" alt="facebook-logo"></button>
+      </div>
+      <div class="auth-form_header">
+        Sign <span >{authType}</span>
+      </div>
+      {#if authType === 'in'}
+        <SignIn />
+      {:else}
+        <SignUp />
+      {/if}
+    </form>
+  </div>
 </Layout>
 
 <style>
+
+.page {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-image: var(--gradient-light);
+}
+
 .auth-form {
   display: flex;
   flex-direction: column;
+  background: #fff;
+  min-height: 62vh;
+  padding: 6vw;
+}
+
+.auth-provider_group {
+  position: relative;
+  height: 5rem;
+  margin-top: -6vw;
+  top: -2.5rem;
+}
+
+.auth-provider {
+  height: 5rem;
+  width: 5rem;
+  border-radius: 50%;
+  background: #fff;
+  border: none;
+  box-shadow: 0 .5rem 1rem 0px rgba(0,0,0,.05);
+  cursor: pointer;
+  margin-right: .25rem;
+}
+
+.auth-provider > img {
+  height: 100%;
+  width: 100%;
 }
 
 .auth-type-toggle {
+  color: #fff;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  padding: 0 2rem;
 }
+
+.auth-type-toggle > * {
+  flex: 1;
+}
+
 </style>
