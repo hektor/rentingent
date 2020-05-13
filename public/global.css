@@ -1,14 +1,25 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:700');
 @import url('https://fonts.googleapis.com/css?family=Poppins:700');
 
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
 body {
   display: flex;
-  height: 100vh;
+  flex-direction: column;
+  min-height: 100vh;
   font-family: var(--font-body);
+  margin: 0;
 }
 
 :root {
-  /* colors */
   --color-1: rgba(5, 102, 141, 1);
   --color-2: rgba(250, 114, 104, 1);
   --color-3: rgba(0, 168, 150, 1);
