@@ -1,7 +1,21 @@
 <script>
-import Header from './header.component.svelte'
-export let withHeader;
+  import Header from './header.component.svelte'
+
+  const userType = 'student'
 </script>
 
-{#if withHeader}<Header/>{/if}
-<slot />
+<div class="container">
+  <Header {userType} />
+  <slot />
+</div>
+
+<style>
+  .container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  .page {
+  }
+</style>
