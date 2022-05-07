@@ -1,6 +1,6 @@
 <script>
-  import { Router, Route } from "svelte-routing";
-  import Auth from '../pages/auth.page.svelte'
+  import { Router, Route } from 'svelte-routing'
+  import AuthPage from '../pages/auth.page.svelte'
   import Home from '../pages/home.page.svelte'
   import FindRoom from '../pages/find-room.page.svelte'
   import MapPage from '../pages/map.page.svelte'
@@ -14,12 +14,11 @@
 
   const hideSplashScreen = () => {
     setTimeout(() => {
-      const loader = document.querySelector(".app-loading").remove()
-    }, 300);
+      document.querySelector('.app-loading').remove()
+    }, 300)
   }
 
-  hideSplashScreen();
-
+  hideSplashScreen()
 </script>
 
 <Router>
