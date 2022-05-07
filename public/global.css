@@ -8,9 +8,6 @@
 }
 
 body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
   margin: 0;
 }
 
@@ -33,12 +30,7 @@ html {
   --color-5: rgba(240, 243, 189, 1);
 
   /* gradients */
-  --gradient-light: linear-gradient(
-    45deg,
-    var(--color-4) 0%,
-    var(--color-5) 85%,
-    #fff 100%
-  );
+  --gradient-light: linear-gradient(45deg, var(--color-4) 0%, var(--color-5) 85%, #fff 100%);
 
   /* typography */
   --font-heading: 'Poppins';
